@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public float playerSpeed = 2f;
 
     public float horizontalSpeed = 3f;
+
+    public Vector3 Position => transform.position;
 
     // left/right movement limits (world X coordinates)
     public float minX = -8f;
