@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,19 +13,12 @@ public class PlayerController : MonoBehaviour
     public float minX = -8f;
     public float maxX = 8f;
 
-    // Assign your "MoveLeftRight" (2D Vector) action from the Input Actions asset in the Inspector.
-    [SerializeField] private InputActionReference moveAction;
+    private InputSystem_Actions actions;
 
-    private void OnEnable()
+    private void Awake()
     {
-        if (moveAction != null && moveAction.action != null)
-            moveAction.action.Enable();
-    }
-
-    private void OnDisable()
-    {
-        if (moveAction != null && moveAction.action != null)
-            moveAction.action.Disable();
+        actions = new InputSystem_Actions();
+        actions.Enable();
     }
 
     private void Update()
@@ -34,12 +27,7 @@ public class PlayerController : MonoBehaviour
         Vector3 forward = playerSpeed * Time.deltaTime * Vector3.forward;
 
         // horizontal input comes from the x component of the MoveLeftRight Vector2 action
-        float horizontalInput = 0f;
-        if (moveAction != null && moveAction.action != null)
-        {
-            Vector2 v = moveAction.action.ReadValue<Vector2>();
-            horizontalInput = v.x;
-        }
+        float horizontalInput = actions.Player.Move.ReadValue<Vector2>().x;
 
         Vector3 horizontal = horizontalInput * horizontalSpeed * Time.deltaTime * Vector3.right;
 
@@ -47,5 +35,10 @@ public class PlayerController : MonoBehaviour
         Vector3 newPos = transform.position + forward + horizontal;
         newPos.x = Mathf.Clamp(newPos.x, minX, maxX);
         transform.position = newPos;
+    }
+
+    private void OnDestroy()
+    {
+        actions.Disable();
     }
 }
