@@ -5,11 +5,13 @@ public class SegmentGenerator : MonoBehaviour
 {
     public GameObject[] segments;
 
-    [SerializeField] int zPosition = 50;
+    [SerializeField] int segmentLength = 50;
 
-    [SerializeField] bool creatingSegment = false;
+    [SerializeField] bool randomizeSegments = false;
 
-    [SerializeField] int segmentNumber;
+    private bool creatingSegment = false;
+
+    private int segmentNumber;
 
     void Update()
     {
@@ -22,10 +24,19 @@ public class SegmentGenerator : MonoBehaviour
 
     IEnumerator Generate()
     {
-        segmentNumber = Random.Range(0, segments.Length - 1);
-        Instantiate(segments[segmentNumber], new Vector3(0, 0, zPosition), Quaternion.identity);
-        zPosition += 50;
+        if (randomizeSegments)
+            segmentNumber = Random.Range(0, segments.Length - 1);
+
+        Instantiate(segments[segmentNumber], new Vector3(0, 0, segmentLength), Quaternion.identity);
+        segmentLength += 50;
         yield return new WaitForSeconds(3);
         creatingSegment = false;
+
+        if (!randomizeSegments)
+        {
+            segmentNumber++;
+            if (segmentNumber >= segments.Length)
+                segmentNumber = 0;
+        }
     }
 }
