@@ -8,7 +8,7 @@ public class CollectCoin : MonoBehaviour
     {
         coinCollected.Play();
 
-        GameController.coinCount += 1;
+        LevelController.coinCount += 1;
 
         this.gameObject.SetActive(false);
     }
