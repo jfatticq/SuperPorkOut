@@ -946,7 +946,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   player: {fileID: 2091091132}
-  playerAnim: {fileID: 2091091132}
+  forwardReduction: 1
+  horizontalReduction: 0
 --- !u!1001 &204163665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1944,7 +1945,7 @@ Transform:
   m_GameObject: {fileID: 365322083}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.25, z: -25}
+  m_LocalPosition: {x: 0, y: 1.25, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2182,7 +2183,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   player: {fileID: 2091091132}
-  playerAnim: {fileID: 2091091132}
+  forwardReduction: 1
+  horizontalReduction: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -5451,7 +5453,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   player: {fileID: 2091091132}
-  playerAnim: {fileID: 2091091132}
+  forwardReduction: 1
+  horizontalReduction: 0
 --- !u!1001 &1465994057
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7611,8 +7614,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   playerSpeed: 12
   horizontalSpeed: 10
-  minX: -8
-  maxX: 8
+  minX: -9
+  maxX: 9
 --- !u!54 &2091091138
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7843,10 +7846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f12d8bd48cbb094b8a17a2e01609c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SegmentGenerator
-  segments:
-  - {fileID: 1496751261}
-  - {fileID: 804130020}
-  - {fileID: 1280383663}
+  nextSegments: []
   segmentLength: 50
   randomizeSegments: 0
 --- !u!4 &2124433175

@@ -6,6 +6,31 @@ public class PlayerController : MonoBehaviour
 
     public float horizontalSpeed = 3f;
 
+    // multiplier applied to both forward and horizontal movement (0..1)
+    // separate multipliers for forward and horizontal movement (0..1)
+    private float forwardMultiplier = 1f;
+    private float horizontalMultiplier = 1f;
+
+    public void SetForwardMultiplier(float multiplier)
+    {
+        forwardMultiplier = Mathf.Clamp01(multiplier);
+    }
+
+    public void ResetForwardMultiplier()
+    {
+        forwardMultiplier = 1f;
+    }
+
+    public void SetHorizontalMultiplier(float multiplier)
+    {
+        horizontalMultiplier = Mathf.Clamp01(multiplier);
+    }
+
+    public void ResetHorizontalMultiplier()
+    {
+        horizontalMultiplier = 1f;
+    }
+
     public Vector3 Position => transform.position;
 
     // left/right movement limits (world X coordinates)
@@ -23,12 +48,12 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // constant forward motion
-        Vector3 forward = playerSpeed * Time.deltaTime * Vector3.forward;
+        Vector3 forward = playerSpeed * forwardMultiplier * Time.deltaTime * Vector3.forward;
 
         // horizontal input comes from the x component of the MoveLeftRight Vector2 action
         float horizontalInput = actions.Player.Move.ReadValue<Vector2>().x;
 
-        Vector3 horizontal = horizontalInput * horizontalSpeed * Time.deltaTime * Vector3.right;
+        Vector3 horizontal = horizontalInput * horizontalSpeed * horizontalMultiplier * Time.deltaTime * Vector3.right;
 
         // compute new position then clamp X to stay within boundaries
         Vector3 newPos = transform.position + forward + horizontal;
