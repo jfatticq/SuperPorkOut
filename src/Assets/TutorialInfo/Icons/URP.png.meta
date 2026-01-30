@@ -6,8 +6,13 @@ TextureImporter:
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
+<<<<<<< Updated upstream:src/Assets/TutorialInfo/Icons/URP.png.meta
     enableMipMap: 0
     sRGBTexture: 1
+=======
+    enableMipMap: 1
+    sRGBTexture: 0
+>>>>>>> Stashed changes:src/Assets/Characters/Timmy/textures/Ch09_1001_Normal.png.meta
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -53,7 +58,11 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
+<<<<<<< Updated upstream:src/Assets/TutorialInfo/Icons/URP.png.meta
   textureType: 2
+=======
+  textureType: 1
+>>>>>>> Stashed changes:src/Assets/Characters/Timmy/textures/Ch09_1001_Normal.png.meta
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -110,6 +119,19 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
