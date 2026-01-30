@@ -1,8 +1,14 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:src/Assets/One Block.prefab.meta
 guid: 90d22209efc2471459345379a7355b7d
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 0
+=======
+guid: 8a1dcad8a92b2564596c6412f4b414e2
+PrefabImporter:
+  externalObjects: {}
+>>>>>>> Stashed changes:src/Assets/Prefabs/One Block.prefab.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 

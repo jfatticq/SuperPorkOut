@@ -120,7 +120,10 @@ NavMeshSettings:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &3330814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3313,6 +3316,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4437459323509006, guid: 0de8a3d472546b04aa775e83b052764e, type: 3}
   m_PrefabInstance: {fileID: 322002884}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &330585543
 GameObject:
@@ -4628,6 +4634,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9181009147835101472, guid: ecb2c407588066b41863c0f1e438f9a9, type: 3}
   m_PrefabInstance: {fileID: 406298085}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &410087039
 GameObject:
@@ -4757,7 +4766,10 @@ MonoBehaviour:
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &434722624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8800,6 +8812,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8442558969881171861, guid: f47171d880b2c6046ad7bec5ec7624d0, type: 3}
   m_PrefabInstance: {fileID: 817899060}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &832575517
 GameObject:
@@ -8851,7 +8866,10 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &842065943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12183,6 +12201,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3934465364932411501, guid: 8a1dcad8a92b2564596c6412f4b414e2, type: 3}
   m_PrefabInstance: {fileID: 1159629337}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &1164415402
 GameObject:
@@ -16751,6 +16772,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3934465364932411501, guid: 8a1dcad8a92b2564596c6412f4b414e2, type: 3}
   m_PrefabInstance: {fileID: 1709422125}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &1709841931
 GameObject:
@@ -21662,4 +21686,7 @@ SceneRoots:
   - {fileID: 635222032}
   - {fileID: 989183059}
   - {fileID: 1552105598}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
