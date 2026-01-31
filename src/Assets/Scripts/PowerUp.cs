@@ -1,6 +1,5 @@
-using UnityEngine;
-using StarterAssets;
 using System.Collections;
+using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
@@ -24,20 +23,18 @@ public class PowerUp : MonoBehaviour
     {
         if (used) return;
 
-        if (other.TryGetComponent(out ThirdPersonController controller))
+        if (other.TryGetComponent(out PlayerController controller))
         {
             used = true;
             StartCoroutine(Boost(controller));
         }
     }
 
-    private IEnumerator Boost(ThirdPersonController controller)
+    private IEnumerator Boost(PlayerController controller)
     {
-        float originalMoveSpeed = controller.MoveSpeed;
-        float originalSprintSpeed = controller.SprintSpeed;
-
-        controller.MoveSpeed *= boostMultiplier;
-        controller.SprintSpeed *= boostMultiplier;
+        // Use the PlayerController's multiplier API instead of a non-existent MoveSpeed property.
+        // Clamp the multiplier to the expected 0..1 range used by PlayerController.
+        controller.SetForwardMultiplier(Mathf.Clamp01(boostMultiplier));
 
         float timer = 0f;
 
@@ -48,10 +45,8 @@ public class PowerUp : MonoBehaviour
             yield return null;
         }
 
-        controller.MoveSpeed = originalMoveSpeed;
-        controller.SprintSpeed = originalSprintSpeed;
+        controller.ResetForwardMultiplier();
 
         Destroy(gameObject);
     }
 }
-
