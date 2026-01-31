@@ -1,0 +1,11 @@
+:root {
+
+}
+
+.back-button {
+    background-image: url('Assets/maanetorn/Farm Game UI - Simple 2D UI/Sprites/256x256/button_purple_default_2.png');
+        background-size: cover;
+    }
+    .back-button:active {
+        background-image: url('Assets/maanetorn/Farm Game UI - Simple 2D UI/Sprites/256x256/button_purple_pressed_2.png');
+    }
