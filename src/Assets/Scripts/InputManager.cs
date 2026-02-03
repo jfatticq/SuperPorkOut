@@ -54,6 +54,9 @@ public class InputManager : MonoBehaviour
 
     private void OnPausePerformed(InputAction.CallbackContext _)
     {
+        // Only allow pause while playing or already paused
+        if (Mode != GameMode.Playing && Mode != GameMode.Paused) return;
+
         PausePressed?.Invoke();
     }
 
