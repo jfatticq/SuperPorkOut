@@ -26,13 +26,17 @@ public class PowerUp : MonoBehaviour
         if (other.TryGetComponent(out PlayerController controller))
         {
             used = true;
+            // Register pickup with LevelController (if present)
+            if (LevelController.Instance != null)
+            {
+                LevelController.Instance.RegisterPickupCollected();
+            }
             StartCoroutine(Boost(controller));
         }
     }
 
     private IEnumerator Boost(PlayerController controller)
     {
-        // Use the PlayerController's multiplier API instead of a non-existent MoveSpeed property.
         // Clamp the multiplier to the expected 0..1 range used by PlayerController.
         controller.SetForwardMultiplier(Mathf.Clamp01(boostMultiplier));
 
