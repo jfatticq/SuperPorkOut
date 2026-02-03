@@ -15,7 +15,6 @@ public class GuideSceneController : MonoBehaviour
 
         Button backButton = root.Q<Button>("BackButton");
 
-        // If button wasn't found by name, try to locate by displayed text
         if (backButton == null)
         {
             Debug.LogWarning("GuideSceneController: Back button not found.");
