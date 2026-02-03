@@ -3,11 +3,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float playerSpeed = 2f;
-
     public float horizontalSpeed = 3f;
 
-    // multiplier applied to both forward and horizontal movement (0..1)
-    // separate multipliers for forward and horizontal movement (0..1)
     private float forwardMultiplier = 1f;
     private float horizontalMultiplier = 1f;
 
@@ -51,7 +48,7 @@ public class PlayerController : MonoBehaviour
         Vector3 forward = playerSpeed * forwardMultiplier * Time.deltaTime * Vector3.forward;
 
         // horizontal input comes from the x component of the MoveLeftRight Vector2 action
-        float horizontalInput = actions.Player.Move.ReadValue<Vector2>().x;
+        float horizontalInput = actions.Gameplay.Move.ReadValue<Vector2>().x;
 
         Vector3 horizontal = horizontalInput * horizontalSpeed * horizontalMultiplier * Time.deltaTime * Vector3.right;
 
