@@ -26,7 +26,7 @@ public class SettingsSceneController : MonoBehaviour
         backButton.clicked += GoBack;
 
         // Enable UI input mode
-        InputManager.Instance.SetMode(GameMode.Guide);
+        InputManager.Instance.SetMode(GameMode.Settings);
 
         // Listen for Cancel (Escape / B)
         InputManager.Instance.Actions.UI.Cancel.performed += OnCancel;
