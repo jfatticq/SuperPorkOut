@@ -26420,7 +26420,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091091132}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -26478,7 +26478,7 @@ Transform:
   m_GameObject: {fileID: 2091091132}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 1.25, z: -22}
+  m_LocalPosition: {x: 0, y: 1, z: -22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -26737,8 +26737,8 @@ MonoBehaviour:
   - {fileID: 804130020}
   segmentLength: 50
   randomizeSegments: 0
-  maxSegments: 3
-  segmentGenerationInterval: 3
+  maxSegments: 5
+  segmentGenerationInterval: 5
 --- !u!4 &2124433175
 Transform:
   m_ObjectHideFlags: 0
