@@ -1752,6 +1752,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FarmerController
   farmerSpeed: 12
   playerController: {fileID: 2091091137}
+  footstepAudioSource: {fileID: 0}
+  minAudibleDistance: 1
+  maxAudibleDistance: 20
+  volumeMultiplier: 1
+  enforce3DSpatial: 1
 --- !u!114 &365322089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16686,8 +16691,8 @@ Transform:
   m_GameObject: {fileID: 2091091132}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 1, z: -22}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.25, z: -22}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 330585546}
