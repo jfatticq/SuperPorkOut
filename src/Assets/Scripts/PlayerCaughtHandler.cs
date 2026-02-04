@@ -43,6 +43,8 @@ public class PlayerCaughtHandler : MonoBehaviour
     {
         if (uiDocument == null) return;
 
+        uiDocument.enabled = false; // Disable to prevent interaction until needed
+
         VisualElement root = uiDocument.rootVisualElement;
         if (root == null) return;
 
@@ -82,6 +84,8 @@ public class PlayerCaughtHandler : MonoBehaviour
         // Disable your movement script(s) here if you have them.
         if (playerController != null) playerController.enabled = false;
         if (farmerController != null) farmerController.enabled = false;
+
+        uiDocument.enabled = true; // Enable UI for interaction
 
         StartCoroutine(CaughtSequence());
     }

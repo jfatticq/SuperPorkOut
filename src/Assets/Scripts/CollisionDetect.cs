@@ -1,100 +1,136 @@
 using UnityEngine;
 
+/// <summary>
+/// Put this on blocking obstacles (trees/rocks).
+/// Requirements:
+/// - Obstacle collider must be NOT trigger (so it blocks).
+/// - Player must have a Rigidbody.
+/// Behavior:
+/// - Plays optional audio on collision enter
+/// - Calls PlayerController to handle gameplay response (animations, speed logic, etc.)
+/// </summary>
 public class CollisionDetect : MonoBehaviour
 {
-    [Header("Player Settings")]
-    [Tooltip("Optional: assign the player's PlayerController here. If left empty the script will try to find the player automatically.")]
-    [SerializeField] PlayerController playerOverride;
+    [System.Serializable]
+    public struct BlockingImpact
+    {
+        public Collider obstacleCollider;
+        public Vector3 contactPoint;
+        public Vector3 contactNormal;
+        public Vector3 playerVelocityAtImpact;
 
-    [Tooltip("Reduction applied to the player's forward speed upon collision.")]
+        [Header("Optional Multipliers")]
+        public bool applySpeedMultipliers;
+        [Range(0f, 1f)] public float forwardMultiplier;
+        [Range(0f, 1f)] public float strafeMultiplier;
+    }
+
+    [Header("Optional: Speed Multipliers While Touching")]
+    [SerializeField] private bool applySpeedMultipliers = false;
+
     [Range(0f, 1f)]
-    [SerializeField] float forwardReduction = 1f; // 1.0 == 100% reduction (default: affect forward speed)
+    [SerializeField] private float forwardMultiplier = 1f;
 
-    [Tooltip("Reduction applied to the player's horizontal speed upon collision.")]
     [Range(0f, 1f)]
-    [SerializeField] float horizontalReduction = 0f; // default: don't affect horizontal speed
+    [SerializeField] private float strafeMultiplier = 1f;
 
-    [Header("Sound Effects")]
-    [Tooltip("Optional: assign an AudioSource here to play a sound effect on collision.")]
-    [SerializeField] AudioSource collisionFX;
+    [Header("Audio")]
+    [SerializeField] private AudioSource collisionFX;
 
-    [Header("Camera Animation")]
-    [Tooltip("Optional: assign the camera's Animator here. If left empty the script will try to find the main camera (child of player or Camera.main) and use its Animator.")]
-    [SerializeField] Animator cameraAnimatorOverride;
+    [Tooltip("If true, will only fire once per continuous collision until the player exits.")]
+    [SerializeField] private bool fireOncePerTouch = true;
 
-    [Tooltip("Name of the camera collision animation to play on impact.")]
-    [SerializeField] string cameraCollisionAnimationName = "CollisionCam";
-
-    private PlayerController playerController;
-    private Animator cameraAnimator;
+    private bool hasFiredThisTouch;
 
     private void Awake()
     {
-        if (playerOverride != null)
+        if (collisionFX == null)
         {
-            playerController = playerOverride;
-            return;
-        }
-
-        playerController = FindFirstObjectByType<PlayerController>();
-        if (playerController == null)
-        {
-            Debug.LogWarning("CollisionDetect: No PlayerController found in scene. Assign a PlayerController in the inspector or ensure one exists at runtime.", this);
-        }
-
-        // Resolve camera animator: use override if provided, otherwise try to find the main camera's Animator
-        if (cameraAnimatorOverride != null)
-        {
-            cameraAnimator = cameraAnimatorOverride;
-        }
-        else
-        {
-            // Try to find camera as a child of the player
-            if (playerController != null)
-            {
-                Camera childCam = playerController.GetComponentInChildren<Camera>();
-                if (childCam != null)
-                {
-                    cameraAnimator = childCam.GetComponent<Animator>();
-                }
-            }
-
-            // Fallback to Camera.main if still not found
-            if (cameraAnimator == null && Camera.main != null)
-            {
-                cameraAnimator = Camera.main.GetComponent<Animator>();
-            }
-
-            if (cameraAnimator == null)
-            {
-                Debug.LogWarning("CollisionDetect: No camera Animator found. Assign one in the inspector if you want to play the 'CollisionCam' animation.", this);
-            }
+            Debug.LogWarning("Assign collisionFX in inspector");
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collisionFX != null) collisionFX.Play();
-
-        if (playerController == null) return;
-
-        if (cameraAnimator != null)
-        {
-            cameraAnimator.Play(cameraCollisionAnimationName);
-        }
-
-        float forwardMultiplier = Mathf.Clamp01(1f - forwardReduction);
-        float horizontalMultiplier = Mathf.Clamp01(1f - horizontalReduction);
-
-        playerController.SetForwardMultiplier(forwardMultiplier);
-        playerController.SetHorizontalMultiplier(horizontalMultiplier);
+        TryHandleCollision(collision);
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionStay(Collision collision)
     {
-        if (playerController == null) return;
+        if (fireOncePerTouch) return;
+        TryHandleCollision(collision);
+    }
 
-        playerController.ResetForwardMultiplier();
-        playerController.ResetHorizontalMultiplier();
+    private void OnCollisionExit(Collision collision)
+    {
+        PlayerController player = collision.collider.GetComponentInParent<PlayerController>();
+        if (player != null)
+        {
+            player.OnBlockingObstacleExit();
+        }
+
+        hasFiredThisTouch = false;
+    }
+
+    /// <summary>
+    /// Processes a physics <see cref="Collision"/> that involves this obstacle and,
+    /// if the colliding object belongs to the player, forwards a populated
+    /// <see cref="BlockingImpact"/> to the player's <c>OnBlockingObstacleImpact</c> handler.
+    /// 
+    /// Behavior:
+    /// - Locates a <see cref="PlayerController"/> on the incoming collider's parent chain.
+    /// - If <see cref="fireOncePerTouch"/> is enabled, ignores repeated collisions for the same contact
+    ///   until <see cref="OnCollisionExit"/> resets <see cref="hasFiredThisTouch"/>.
+    /// - Plays the optional <see cref="collisionFX"/> audio if assigned.
+    /// - Uses the first contact point from the collision to build a <see cref="BlockingImpact"/>,
+    ///   including the obstacle collider, contact point/normal, and the player's velocity at impact.
+    /// - Copies the obstacle's configured speed multiplier settings into the impact struct.
+    /// - Calls <c>player.OnBlockingObstacleImpact(impact)</c> and marks the touch as fired.
+    /// </summary>
+    /// <param name="collision">The <see cref="Collision"/> data supplied by Unity's physics callbacks.</param>
+    /// <remarks>
+    /// This method returns immediately when no <see cref="PlayerController"/> is found on the colliding object.
+    /// The player's velocity at impact is taken from <c>collision.rigidbody.linearVelocity</c> if a rigidbody is present;
+    /// otherwise it defaults to <c>Vector3.zero</c>.
+    /// </remarks>
+    private void TryHandleCollision(Collision collision)
+    {
+        PlayerController player = collision.collider.GetComponentInParent<PlayerController>();
+        if (player == null) return;
+
+        if (fireOncePerTouch && hasFiredThisTouch) return;
+
+        if (collisionFX != null)
+        {
+            collisionFX.Play();
+        }
+
+        ContactPoint cp = collision.GetContact(0);
+
+        // Compute the player's velocity at the moment of impact.
+        // "collision.rigidbody" refers to the player's Rigidbody. It can be null when the other
+        // collider has no Rigidbody (e.g. a static collider). In that case we default to
+        // Vector3.zero so downstream logic receives a safe, well-defined value.
+        Vector3 impactVelocity = Vector3.zero;
+        if (collision.rigidbody != null)
+        {
+            impactVelocity = collision.rigidbody.linearVelocity;
+        }
+
+        var impact = new BlockingImpact
+        {
+            obstacleCollider = cp.otherCollider,
+            contactPoint = cp.point,
+            contactNormal = cp.normal,
+            playerVelocityAtImpact = impactVelocity,
+
+            applySpeedMultipliers = applySpeedMultipliers,
+            forwardMultiplier = forwardMultiplier,
+            strafeMultiplier = strafeMultiplier
+        };
+
+        player.OnBlockingObstacleImpact(impact);
+
+        hasFiredThisTouch = true;
     }
 }

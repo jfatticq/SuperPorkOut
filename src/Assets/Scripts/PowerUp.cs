@@ -1,56 +1,43 @@
-using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class PowerUp : MonoBehaviour
 {
-    [Header("Speed Boost")]
-    public float boostMultiplier = 1.5f;
-    public float boostDuration = 3f;
+    [Header("Stamina Gain")]
+    [SerializeField] private float staminaAmount = 15f;
 
-    [Header("Stamina")]
-    public float maxStamina = 100f;
-    public float staminaDrainPerSecond = 20f;
+    [Header("Optional")]
+    [SerializeField] private AudioSource pickupSfx;
+    [SerializeField] private bool destroyOnPickup = true;
 
-    private bool used = false;
-    private float currentStamina;
-
-    private void Start()
+    private void Awake()
     {
-        currentStamina = maxStamina;
+        Collider c = GetComponent<Collider>();
+        if (c.isTrigger == false)
+        {
+            Debug.LogWarning("PowerUp expects the collider to be marked as Trigger.", this);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (used) return;
+        // Pig might be on child collider, so search parent
+        Stamina stamina = other.GetComponentInParent<Stamina>();
+        if (stamina == null) return;
 
-        if (other.TryGetComponent(out PlayerController controller))
+        if (pickupSfx != null)
         {
-            used = true;
-            // Register pickup with LevelController (if present)
-            if (LevelController.Instance != null)
-            {
-                LevelController.Instance.RegisterPickupCollected();
-            }
-            StartCoroutine(Boost(controller));
-        }
-    }
-
-    private IEnumerator Boost(PlayerController controller)
-    {
-        // Clamp the multiplier to the expected 0..1 range used by PlayerController.
-        controller.SetForwardMultiplier(Mathf.Clamp01(boostMultiplier));
-
-        float timer = 0f;
-
-        while (timer < boostDuration && currentStamina > 0f)
-        {
-            currentStamina -= staminaDrainPerSecond * Time.deltaTime;
-            timer += Time.deltaTime;
-            yield return null;
+            pickupSfx.Play();
         }
 
-        controller.ResetForwardMultiplier();
+        stamina.AddStamina(staminaAmount);
 
-        Destroy(gameObject);
+        if (destroyOnPickup)
+        {
+            // If you play SFX from this object, consider:
+            // - audio source on pig instead, OR
+            // - detach audio source before destroying
+            Destroy(gameObject);
+        }
     }
 }
