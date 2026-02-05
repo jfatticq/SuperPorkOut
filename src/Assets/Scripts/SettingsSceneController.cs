@@ -1,37 +1,21 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
-using System.Linq;
 
 [RequireComponent(typeof(UIDocument))]
 public class SettingsSceneController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private readonly Button backButton;
+
+    private void OnEnable()
     {
-        // Try to find the UIDocument on this GameObject and hook up the Back button
-        if (!TryGetComponent<UIDocument>(out var uiDoc))
-        {
-            Debug.LogWarning("SettingsSceneController: No UIDocument found on SceneController GameObject.");
-            return;
-        }
-
+        var uiDoc = GetComponent<UIDocument>();
         var root = uiDoc.rootVisualElement;
-        Button backButton = root.Q<Button>("Back");
 
-        // If button wasn't found by name, try to locate by displayed text
-        if (backButton == null)
-        {
-            var allButtons = root.Query<Button>().ToList();
-            foreach (var b in allButtons)
-            {
-                if (string.Equals(b.text, "Back", System.StringComparison.OrdinalIgnoreCase))
-                {
-                    backButton = b;
-                    break;
-                }
-            }
-        }
+        Button backButton = root.Q<Button>("BackButton");
 
         if (backButton == null)
         {
@@ -39,13 +23,25 @@ public class SettingsSceneController : MonoBehaviour
             return;
         }
 
-        backButton.clicked += () =>
-        {
-            SceneManager.LoadScene("MainMenu");
-        };
+        backButton.clicked += GoBack;
+
+        // Enable UI input mode
+        InputManager.Instance.SetMode(GameMode.Settings);
+
+        // Listen for Cancel (Escape / B)
+        InputManager.Instance.Actions.UI.Cancel.performed += OnCancel;
 
         // Populate Resolution dropdown if present
         var resolutionDropdown = root.Q<DropdownField>("ResolutionDropDown");
+        PopulateResolutionDropDown(resolutionDropdown);
+
+        // Populate Fullscreen Mode dropdown if present
+        var fullscreenDropdown = root.Q<DropdownField>("FullscreenDropDown");
+        PopulateFullScreenDropDown(fullscreenDropdown);
+    }
+
+    private static void PopulateResolutionDropDown(DropdownField resolutionDropdown)
+    {
         if (resolutionDropdown != null)
         {
             var resolutions = Screen.resolutions;
@@ -108,5 +104,55 @@ public class SettingsSceneController : MonoBehaviour
                 });
             }
         }
+    }
+
+    private static void PopulateFullScreenDropDown(DropdownField fullscreenDropdown)
+    {
+        if (fullscreenDropdown != null)
+        {
+            // Friendly labels mapped to FullScreenMode values
+            var modeMap = new Dictionary<string, FullScreenMode>
+            {
+                { "Windowed", FullScreenMode.Windowed },
+                { "Fullscreen (Windowed)", FullScreenMode.FullScreenWindow },
+                { "Exclusive Fullscreen", FullScreenMode.ExclusiveFullScreen },
+                { "Maximized Window", FullScreenMode.MaximizedWindow }
+            };
+
+            var modeChoices = modeMap.Keys.ToList();
+            fullscreenDropdown.choices = modeChoices;
+
+            // Set current value
+            var currentModeLabel = modeMap.FirstOrDefault(kv => kv.Value == Screen.fullScreenMode).Key ?? modeChoices.First();
+            fullscreenDropdown.value = currentModeLabel;
+
+            // Apply when changed
+            fullscreenDropdown.RegisterValueChangedCallback(evt =>
+            {
+                if (modeMap.TryGetValue(evt.newValue, out var mode))
+                {
+                    Screen.fullScreenMode = mode;
+                }
+            });
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (backButton != null)
+            backButton.clicked -= GoBack;
+
+        if (InputManager.Instance != null)
+            InputManager.Instance.Actions.UI.Cancel.performed -= OnCancel;
+    }
+
+    private void OnCancel(InputAction.CallbackContext _)
+    {
+        GoBack();
+    }
+
+    private void GoBack()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
