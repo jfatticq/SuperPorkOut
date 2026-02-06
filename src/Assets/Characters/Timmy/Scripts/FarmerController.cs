@@ -1,3 +1,4 @@
+using Characters.Player;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -45,7 +46,7 @@ public class FarmerController : MonoBehaviour
 
         if (playerController != null)         {
             // match horizontal position with the player
-            Vector3 playerPos = playerController.Position;
+            Vector3 playerPos = playerController.transform.position;
             Vector3 newPos = new Vector3(playerPos.x, transform.position.y, transform.position.z) + forward;
             transform.position = newPos;
             // adjust footstep volume based on distance to player
