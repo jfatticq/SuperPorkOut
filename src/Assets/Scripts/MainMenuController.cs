@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -50,7 +51,7 @@ public class MainMenuController : MonoBehaviour
 
     private void OnPlayClicked()
     {
-        SceneManager.LoadScene("Level01");
+        StartCoroutine(StartLevel());
     }
 
     private void OnGuideClicked()
@@ -70,5 +71,11 @@ public class MainMenuController : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
+    }
+
+    IEnumerator StartLevel()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("Level01");
     }
 }

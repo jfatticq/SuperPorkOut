@@ -9937,7 +9937,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7078440438823737486}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.15124644, w: 0.9884961}
+  m_LocalRotation: {x: 0, y: 0, z: 0.15124355, w: 0.9884966}
   m_LocalPosition: {x: -4.8528, y: 0.99009943, z: 11.4956045}
   m_LocalScale: {x: 2.4938, y: 2.4938, z: 2.4938}
   m_ConstrainProportionsScale: 0
@@ -10009,7 +10009,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7463f603385b4b44ca47184068f5f3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUp
-  boostMultiplier: 1.5
-  boostDuration: 3
-  maxStamina: 100
-  staminaDrainPerSecond: 20
+  staminaAmount: 15
+  pickupSfx: {fileID: 0}
+  destroyOnPickup: 1
