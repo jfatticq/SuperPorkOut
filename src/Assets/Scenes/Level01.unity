@@ -934,13 +934,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277803361}
-  m_LocalRotation: {x: 0.041173648, y: 0.041173648, z: -0.70590705, w: 0.70590705}
+  m_LocalRotation: {x: 0.0009588134, y: 0.0009588172, z: -0.7071062, w: 0.7071062}
   m_LocalPosition: {x: 0, y: 0, z: -24}
   m_LocalScale: {x: 0.9773754, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1203012662}
-  m_LocalEulerAnglesHint: {x: 6.676, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0.155, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1052, y: 239}
@@ -3188,16 +3188,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 776518150}
-  m_LocalRotation: {x: 0.08857725, y: -0.08514198, z: 0.69829917, w: 0.7051831}
-  m_LocalPosition: {x: 0, y: 0, z: -48.999973}
+  m_LocalRotation: {x: 0.010102783, y: -0.0059208106, z: 0.7038222, w: 0.7102797}
+  m_LocalPosition: {x: 0, y: 0, z: -17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1203012662}
-  m_LocalEulerAnglesHint: {x: 14.113, y: 0.214, z: 89.464}
+  m_LocalEulerAnglesHint: {x: 1.3, y: 0.333, z: 89.48}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1049.9999, y: 241.00023}
+  m_AnchoredPosition: {x: 1050, y: 240}
   m_SizeDelta: {x: 484.933, y: 72.106}
   m_Pivot: {x: 0.5000001, y: 0.49999994}
 --- !u!114 &776518152
@@ -14198,6 +14198,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1203012662}
+  - component: {fileID: 1203012663}
   m_Layer: 5
   m_Name: StaminaBar
   m_TagString: Untagged
@@ -14226,6 +14227,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1203012663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203012661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7bb3e571336504ea88cc2da0b65d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaminaBar
 --- !u!1001 &1206855963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16800,6 +16813,7 @@ GameObject:
   - component: {fileID: 2091091137}
   - component: {fileID: 2091091138}
   - component: {fileID: 2091091139}
+  - component: {fileID: 2091091140}
   m_Layer: 0
   m_Name: Oinkle
   m_TagString: Player
@@ -17045,6 +17059,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2091091140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091091132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e274ba64452ca44967f89764803e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Stamina
+  maxStamina: 100
+  currentStamina: 100
+  drainRate: 20
 --- !u!1001 &2101527189
 PrefabInstance:
   m_ObjectHideFlags: 0
