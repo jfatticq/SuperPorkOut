@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4749214156994362438}
   - component: {fileID: 2018773191151959105}
   - component: {fileID: 8760876469030839363}
-  - component: {fileID: 9038060091773766556}
   - component: {fileID: 1181838816634696082}
   m_Layer: 0
   m_Name: Tree01
@@ -114,23 +113,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9038060091773766556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9108264910247912960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c618ede6d0c38241972cd8d8db7a78d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  applySpeedMultipliers: 0
-  forwardMultiplier: 1
-  strafeMultiplier: 1
-  collisionFX: {fileID: 1181838816634696082}
-  fireOncePerTouch: 1
 --- !u!82 &1181838816634696082
 AudioSource:
   m_ObjectHideFlags: 0
