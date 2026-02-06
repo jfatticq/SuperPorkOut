@@ -1,3 +1,4 @@
+using Characters.Player;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
@@ -49,7 +50,7 @@ public class LevelController : MonoBehaviour
         // track distance between player and farmer
         if (playerController != null && farmerController != null)
         {
-            float dist = Vector3.Distance(playerController.Position, farmerController.transform.position);
+            float dist = Vector3.Distance(playerController.transform.position, farmerController.transform.position);
             distanceSum += dist;
             distanceSamples++;
         }
@@ -74,6 +75,8 @@ public class LevelController : MonoBehaviour
 
     // Expose read-only properties if needed elsewhere
     public float TotalPlayTimeSeconds => totalPlayTimeSeconds;
+
     public float AverageDistance => distanceSamples > 0 ? distanceSum / distanceSamples : 0f;
+
     public int PickupsCollected => pickupsCollected;
 }
