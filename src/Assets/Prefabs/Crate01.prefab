@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6303562132957855481}
   - component: {fileID: 1056919376955737558}
   - component: {fileID: 5968896642200703690}
-  - component: {fileID: 4819609486750060277}
   - component: {fileID: -1861328521725622987}
   m_Layer: 0
   m_Name: Crate01
@@ -114,23 +113,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4819609486750060277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5731401971121948023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c618ede6d0c38241972cd8d8db7a78d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  applySpeedMultipliers: 0
-  forwardMultiplier: 1
-  strafeMultiplier: 1
-  collisionFX: {fileID: -1861328521725622987}
-  fireOncePerTouch: 1
 --- !u!82 &-1861328521725622987
 AudioSource:
   m_ObjectHideFlags: 0
