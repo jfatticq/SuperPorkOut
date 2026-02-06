@@ -67,7 +67,7 @@ public class SegmentGenerator : MonoBehaviour
             }
         }
         segmentLength += 50;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         creatingSegment = false;
 
         if (!randomizeSegments)
