@@ -19248,6 +19248,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1595928529}
     m_Modifications:
+    - target: {fileID: 2493161089869791859, guid: 58a0fb74884742648a4dee1aa188e628, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4447516440471432225, guid: 58a0fb74884742648a4dee1aa188e628, type: 3}
       propertyPath: m_Name
       value: collideMud (4)
