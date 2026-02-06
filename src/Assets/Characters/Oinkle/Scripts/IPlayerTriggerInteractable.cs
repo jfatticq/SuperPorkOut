@@ -1,6 +1,6 @@
-﻿namespace Assets.Characters.Player.Scripts
+﻿namespace Characters.Player
 {
-    internal interface IPlayerTriggerInteractable
+    public interface IPlayerTriggerInteractable
     {
         void OnPlayerEnter(PlayerFacade player);   // called when player enters trigger
 

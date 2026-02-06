@@ -1,5 +1,4 @@
-﻿using Assets.Characters.Player.Scripts;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Characters.Player
 {
