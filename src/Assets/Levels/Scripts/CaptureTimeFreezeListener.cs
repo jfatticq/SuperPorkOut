@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SuperPorkOut.Gameplay
+namespace SuperPorkOut.Levels
 {
     public class CaptureTimeFreezeListener : MonoBehaviour
     {

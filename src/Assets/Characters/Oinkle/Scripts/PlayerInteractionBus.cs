@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Characters.Player
+namespace SuperPorkOut.Characters.Player
 {
     public class PlayerInteractionBus : MonoBehaviour
     {

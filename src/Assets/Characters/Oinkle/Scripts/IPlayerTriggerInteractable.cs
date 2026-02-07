@@ -1,4 +1,4 @@
-﻿namespace Characters.Player
+﻿namespace SuperPorkOut.Characters.Player
 {
     public interface IPlayerTriggerInteractable
     {

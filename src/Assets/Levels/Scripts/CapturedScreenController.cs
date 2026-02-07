@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace SuperPorkOut.Gameplay
+namespace SuperPorkOut.Levels
 {
     [RequireComponent(typeof(UIDocument))]
     public class CapturedScreenController : MonoBehaviour

@@ -1,8 +1,8 @@
-using SuperPorkOut.Characters;
 using SuperPorkOut.Characters.Farmer;
+using SuperPorkOut.Characters.Player;
 using UnityEngine;
 
-namespace SuperPorkOut.Gameplay
+namespace SuperPorkOut.Levels
 {
     public class CaptureCoordinator : MonoBehaviour
     {

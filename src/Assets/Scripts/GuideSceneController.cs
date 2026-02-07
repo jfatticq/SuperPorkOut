@@ -6,14 +6,14 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(UIDocument))]
 public class GuideSceneController : MonoBehaviour
 {
-    private readonly Button backButton;
+    private Button backButton;
 
     private void OnEnable()
     {
         var uiDoc = GetComponent<UIDocument>();
         var root = uiDoc.rootVisualElement;
 
-        Button backButton = root.Q<Button>("BackButton");
+        backButton = root.Q<Button>("BackButton");
 
         if (backButton == null)
         {

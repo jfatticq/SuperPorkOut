@@ -1,4 +1,4 @@
-using Characters.Player;
+using SuperPorkOut.Characters.Player;
 using UnityEngine;
 
 namespace SuperPorkOut.Characters.Farmer

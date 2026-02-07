@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Characters.Player
+namespace SuperPorkOut.Characters.Player
 {
     [RequireComponent(typeof(PlayerFacade))]
     public class PlayerTriggerRouter : MonoBehaviour

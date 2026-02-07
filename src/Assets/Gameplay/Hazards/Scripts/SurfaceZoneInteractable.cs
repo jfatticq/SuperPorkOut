@@ -1,25 +1,28 @@
-using Characters.Player;
+using SuperPorkOut.Characters.Player;
 using UnityEngine;
 
-[RequireComponent(typeof(SurfaceZone))]
-public class SurfaceZoneInteractable : MonoBehaviour, IPlayerTriggerInteractable
+namespace SuperPorkOut.Gameplay.Hazards
 {
-    private SurfaceZone zone;
-
-    private void Awake()
+    [RequireComponent(typeof(SurfaceZone))]
+    public class SurfaceZoneInteractable : MonoBehaviour, IPlayerTriggerInteractable
     {
-        zone = GetComponent<SurfaceZone>();
-    }
+        private SurfaceZone zone;
 
-    public void OnPlayerEnter(PlayerFacade player)
-    {
-        if (player.TryGetComponent<FootstepSurfaceAudio>(out var audio))
-            audio.EnterZone(zone);
-    }
+        private void Awake()
+        {
+            zone = GetComponent<SurfaceZone>();
+        }
 
-    public void OnPlayerExit(PlayerFacade player)
-    {
-        if (player.TryGetComponent<FootstepSurfaceAudio>(out var audio)) 
-            audio.ExitZone(zone);
+        public void OnPlayerEnter(PlayerFacade player)
+        {
+            if (player.TryGetComponent<FootstepSurfaceAudio>(out var audio))
+                audio.EnterZone(zone);
+        }
+
+        public void OnPlayerExit(PlayerFacade player)
+        {
+            if (player.TryGetComponent<FootstepSurfaceAudio>(out var audio))
+                audio.ExitZone(zone);
+        }
     }
 }

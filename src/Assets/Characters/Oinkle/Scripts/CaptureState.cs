@@ -1,7 +1,6 @@
 using UnityEngine;
-using Characters.Player;
 
-namespace SuperPorkOut.Characters
+namespace SuperPorkOut.Characters.Player
 {
     [RequireComponent(typeof(PlayerController))]
     [RequireComponent(typeof(PlayerFacade))]

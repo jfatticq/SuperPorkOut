@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace SuperPorkOut.Gameplay
+namespace SuperPorkOut.Levels
 {
     public class GameStateBus : MonoBehaviour
     {

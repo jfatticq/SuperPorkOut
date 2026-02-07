@@ -1,3 +1,4 @@
+using SuperPorkOut.Gameplay.Hazards;
 using System.Collections.Generic;
 using UnityEngine;
 

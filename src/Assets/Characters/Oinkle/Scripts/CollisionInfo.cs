@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Characters.Player
+namespace SuperPorkOut.Characters.Player
 {
     /// <summary>
     /// Lightweight collision info passed to IPlayerCollisionInteractable.

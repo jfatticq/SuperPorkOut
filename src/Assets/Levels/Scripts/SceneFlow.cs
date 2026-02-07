@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace SuperPorkOut.Gameplay
+namespace SuperPorkOut.Levels
 {
     public class SceneFlow : MonoBehaviour
     {

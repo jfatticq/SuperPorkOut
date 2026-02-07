@@ -1,3 +1,4 @@
+using SuperPorkOut.Gameplay.Hazards;
 using UnityEngine;
 
 [RequireComponent(typeof(FootstepSurfaceAudio))]
