@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Characters.Player
+namespace SuperPorkOut.Characters.Player
 {
     public class PlayerImpactFeedback : MonoBehaviour
     {

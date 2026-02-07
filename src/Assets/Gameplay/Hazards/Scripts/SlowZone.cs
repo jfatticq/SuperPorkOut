@@ -1,25 +1,28 @@
+using SuperPorkOut.Characters.Player;
 using UnityEngine;
-using Characters.Player;
 
-[RequireComponent(typeof(Collider))]
-public class SlowZone : MonoBehaviour, IPlayerTriggerInteractable
+namespace SuperPorkOut.Gameplay.Hazards
 {
-    [SerializeField] private SpeedAxes affects = SpeedAxes.Both;
-
-    [SerializeField, Range(0f, 1f)] private float multiplier = 0.6f;
-
-    private void Reset()
+    [RequireComponent(typeof(Collider))]
+    public class SlowZone : MonoBehaviour, IPlayerTriggerInteractable
     {
-        GetComponent<Collider>().isTrigger = true;
-    }
+        [SerializeField] private SpeedAxes affects = SpeedAxes.Both;
 
-    public void OnPlayerEnter(PlayerFacade player)
-    {
-        player.SpeedModifiers.SetModifier(this, affects, multiplier);
-    }
+        [SerializeField, Range(0f, 1f)] private float multiplier = 0.6f;
 
-    public void OnPlayerExit(PlayerFacade player)
-    {
-        player.SpeedModifiers.RemoveModifier(this);
+        private void Reset()
+        {
+            GetComponent<Collider>().isTrigger = true;
+        }
+
+        public void OnPlayerEnter(PlayerFacade player)
+        {
+            player.SpeedModifiers.SetModifier(this, affects, multiplier);
+        }
+
+        public void OnPlayerExit(PlayerFacade player)
+        {
+            player.SpeedModifiers.RemoveModifier(this);
+        }
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Characters.Player
+namespace SuperPorkOut.Characters.Player
 {
     /// <summary>
     /// Holds temporary speed multipliers that can be applied to specific axes.

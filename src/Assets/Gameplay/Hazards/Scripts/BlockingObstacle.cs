@@ -1,19 +1,22 @@
+using SuperPorkOut.Characters.Player;
 using UnityEngine;
-using Characters.Player;
 
-[RequireComponent(typeof(Collider))]
-public class BlockingObstacle : MonoBehaviour, IPlayerCollisionInteractable
+namespace SuperPorkOut.Gameplay.Hazards
 {
-    [SerializeField] private AudioClip hitSfx;
-
-    private void Reset()
+    [RequireComponent(typeof(Collider))]
+    public class BlockingObstacle : MonoBehaviour, IPlayerCollisionInteractable
     {
-        GetComponent<Collider>().isTrigger = false;
-    }
+        [SerializeField] private AudioClip hitSfx;
 
-    public void OnPlayerCollision(PlayerFacade player, CollisionInfo hit)
-    {
-        if (hitSfx != null)
-            AudioSource.PlayClipAtPoint(hitSfx, hit.Point);
+        private void Reset()
+        {
+            GetComponent<Collider>().isTrigger = false;
+        }
+
+        public void OnPlayerCollision(PlayerFacade player, CollisionInfo hit)
+        {
+            if (hitSfx != null)
+                AudioSource.PlayClipAtPoint(hitSfx, hit.Point);
+        }
     }
 }

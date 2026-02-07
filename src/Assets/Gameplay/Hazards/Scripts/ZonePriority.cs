@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class ZonePriority : MonoBehaviour
+namespace SuperPorkOut.Gameplay.Hazards
 {
-    public int priority = 0;
+    public class ZonePriority : MonoBehaviour
+    {
+        public int priority = 0;
+    }
 }

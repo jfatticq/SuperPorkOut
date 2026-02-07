@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Characters.Player
+namespace SuperPorkOut.Characters.Player
 {
     /// <summary>
     /// Which planar axes a speed modifier affects.
