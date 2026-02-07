@@ -19,7 +19,7 @@ public class LevelController : MonoBehaviour
     private float distanceSum = 0f;
     private int distanceSamples = 0;
     private int pickupsCollected = 0;
-    private float currentPlayerStamina = 0;
+    private int currentPlayerStamina = 0;
 
     // Cached text component
     private TMPro.TMP_Text _textDisplay;
@@ -61,7 +61,7 @@ public class LevelController : MonoBehaviour
 
         if (playerStamina != null)
         {
-            currentPlayerStamina = playerStamina.Current;
+            currentPlayerStamina = Mathf.RoundToInt(playerStamina.Current);
         }
 
         // update display if available
@@ -90,5 +90,5 @@ public class LevelController : MonoBehaviour
 
     public int PickupsCollected => pickupsCollected;
 
-    public float CurrentPlayerStamina => currentPlayerStamina;
+    public int CurrentPlayerStamina => currentPlayerStamina;
 }
