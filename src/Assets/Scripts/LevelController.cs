@@ -1,4 +1,6 @@
 using Characters.Player;
+using SuperPorkOut.Characters.Farmer;
+using System;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
@@ -10,12 +12,14 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject distanceToFarmerDisplay;
     [SerializeField] PlayerController playerController;
     [SerializeField] FarmerController farmerController;
+    [SerializeField] Stamina playerStamina;
 
     // Tracking fields
     private float totalPlayTimeSeconds = 0f;
     private float distanceSum = 0f;
     private int distanceSamples = 0;
     private int pickupsCollected = 0;
+    private float currentPlayerStamina = 0;
 
     // Cached text component
     private TMPro.TMP_Text _textDisplay;
@@ -55,15 +59,21 @@ public class LevelController : MonoBehaviour
             distanceSamples++;
         }
 
+        if (playerStamina != null)
+        {
+            currentPlayerStamina = playerStamina.Current;
+        }
+
         // update display if available
         if (_textDisplay != null)
         {
             float avgDistance = distanceSamples > 0 ? distanceSum / distanceSamples : 0f;
-            _textDisplay.text = string.Format("Time: {0:00}:{1:00}\nAvg Dist: {2:0.00}\nPickups: {3}",
+            _textDisplay.text = string.Format("Time: {0:00}:{1:00}\nAvg Dist: {2:0.00}\nPickups: {3}\nCurrent Stamina: {4}",
                 Mathf.FloorToInt(totalPlayTimeSeconds / 60f),
                 Mathf.FloorToInt(totalPlayTimeSeconds % 60f),
                 avgDistance,
-                pickupsCollected);
+                pickupsCollected, 
+                currentPlayerStamina);
         }
     }
 
@@ -79,4 +89,6 @@ public class LevelController : MonoBehaviour
     public float AverageDistance => distanceSamples > 0 ? distanceSum / distanceSamples : 0f;
 
     public int PickupsCollected => pickupsCollected;
+
+    public float CurrentPlayerStamina => currentPlayerStamina;
 }

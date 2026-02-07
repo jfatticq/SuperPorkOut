@@ -3005,18 +3005,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3608d1d14f77a242979f5f563388647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCaughtHandler
-  playerTag: Player
-  playerController: {fileID: 2091091137}
-  farmerController: {fileID: 365322088}
-  playerAnimator: {fileID: 0}
-  farmerAnimator: {fileID: 990821279}
-  farmerCaptureAnimation: Lifting Object
-  caughtAnimLeadTime: 0.35
-  uiDocument: {fileID: 989183060}
-  restartButtonName: RestartButton
-  mainMenuButtonName: MainMenuButton
-  mainMenuSceneName: MainMenu
-  fadeDuration: 0.35
+  gameStateBus: {fileID: 2124433182}
+  pigTag: Player
+  reason: FarmerOverlap
 --- !u!82 &365322090
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17358,13 +17349,14 @@ GameObject:
   m_Component:
   - component: {fileID: 989183059}
   - component: {fileID: 989183060}
+  - component: {fileID: 989183061}
   m_Layer: 0
   m_Name: CapturedScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &989183059
 Transform:
   m_ObjectHideFlags: 0
@@ -17403,6 +17395,23 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &989183061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989183058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e21d8fbdcfb2147a36e3d0b4eb5f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Gameplay.CapturedScreenController
+  restartButtonName: RestartButton
+  mainMenuButtonName: MainMenuButton
+  fadeOverlayName: CapturedOverlay
+  fadeToBlackSeconds: 1
+  sceneFlow: {fileID: 2124433179}
 --- !u!1 &990821277 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e1178034581029f4ea0096d64eec88c3, type: 3}
@@ -25269,6 +25278,7 @@ GameObject:
   - component: {fileID: 2091091142}
   - component: {fileID: 2091091141}
   - component: {fileID: 2091091140}
+  - component: {fileID: 2091091147}
   m_Layer: 0
   m_Name: Oinkle
   m_TagString: Player
@@ -25575,7 +25585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00190fbea1bdb9349aa8fd05ad05bf3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpeedModel
-  baseForwardSpeed: 12
+  baseForwardSpeed: 15
   baseStrafeSpeed: 8
   staminaToSpeed:
     serializedVersion: 2
@@ -25627,7 +25637,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Characters.Player.Stamina
   maxStamina: 100
   currentStamina: 100
-  drainRatePerSecond: 10
+  drainRatePerSecond: 5
+--- !u!114 &2091091147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091091132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d405712af954e6e43ae7b013c0cc24ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Characters.CaptureState
+  freezeRigidbodyPlanarVelocity: 1
 --- !u!1001 &2094172028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25937,6 +25960,10 @@ GameObject:
   - component: {fileID: 2124433176}
   - component: {fileID: 2124433177}
   - component: {fileID: 2124433178}
+  - component: {fileID: 2124433182}
+  - component: {fileID: 2124433181}
+  - component: {fileID: 2124433179}
+  - component: {fileID: 2124433180}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -26000,6 +26027,7 @@ MonoBehaviour:
   distanceToFarmerDisplay: {fileID: 1467477356}
   playerController: {fileID: 2091091137}
   farmerController: {fileID: 365322088}
+  playerStamina: {fileID: 2091091146}
 --- !u!114 &2124433177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26026,6 +26054,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseListener
   pauseMenuDocument: {fileID: 1856916376}
+--- !u!114 &2124433179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124433173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5000d32ff0eb5bb468f44c412db6e1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Gameplay.SceneFlow
+  mainMenuSceneName: MainMenu
+--- !u!114 &2124433180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124433173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90adfaaa18294d4baa061a9f38fb8f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Gameplay.CaptureTimeFreezeListener
+  gameStateBus: {fileID: 2124433182}
+  setTimeScaleZeroOnCapture: 1
+--- !u!114 &2124433181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124433173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63375d9d886340549b78f8da44f52dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Gameplay.CaptureCoordinator
+  gameStateBus: {fileID: 2124433182}
+  capturedScreen: {fileID: 989183061}
+  freezeFarmerAlso: 0
+  pigCapturedTrigger: Captured
+  farmerCapturedTrigger: Captured
+--- !u!114 &2124433182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124433173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3454098271bad894aa5415b78675cae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Gameplay.GameStateBus
 --- !u!1001 &2129221866
 PrefabInstance:
   m_ObjectHideFlags: 0
