@@ -1785,6 +1785,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 626655155}
     m_Modifications:
+    - target: {fileID: 5876799895499799972, guid: 7363086f938f3c3418f66d0b75fcbde5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6044700061577927919, guid: 7363086f938f3c3418f66d0b75fcbde5, type: 3}
       propertyPath: m_Name
       value: cabObject (1)
