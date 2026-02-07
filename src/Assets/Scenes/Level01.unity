@@ -2077,6 +2077,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightBorder
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
       propertyPath: m_LocalScale.y
       value: 3
@@ -3687,6 +3691,7 @@ GameObject:
   - component: {fileID: 365322088}
   - component: {fileID: 365322089}
   - component: {fileID: 365322090}
+  - component: {fileID: 365322091}
   m_Layer: 0
   m_Name: FarmerTed
   m_TagString: Farmer
@@ -3929,6 +3934,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &365322091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365322083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e49a9852c127a4895f53831713f8a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurfaceAudio
 --- !u!1001 &365899236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4659,6 +4676,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain_2 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.5
@@ -4926,6 +4947,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
       propertyPath: m_Name
       value: Terrain_2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
       propertyPath: m_LocalScale.y
@@ -6746,6 +6771,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain_2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.5
@@ -7610,6 +7639,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
       propertyPath: m_Name
       value: Terrain_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
       propertyPath: m_LocalScale.y
@@ -18441,6 +18474,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain_2 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.5
@@ -19445,6 +19482,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
       propertyPath: m_Name
       value: LeftBorder
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
       propertyPath: m_LocalScale.y
@@ -26708,7 +26749,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6b979de1ef7944896a46321d0bb8b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenuController
-  pauseMenuDocument: {fileID: 1856916376}
   pauseListener: {fileID: 2124433178}
 --- !u!1001 &1863723341
 PrefabInstance:
@@ -28278,6 +28318,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain_2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.5
@@ -29102,6 +29146,7 @@ GameObject:
   - component: {fileID: 2091091142}
   - component: {fileID: 2091091141}
   - component: {fileID: 2091091140}
+  - component: {fileID: 2091091147}
   m_Layer: 0
   m_Name: Oinkle
   m_TagString: Player
@@ -29124,7 +29169,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -29197,7 +29242,7 @@ Transform:
   m_GameObject: {fileID: 2091091132}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 1.25, z: -22}
+  m_LocalPosition: {x: 0, y: 1.5, z: -22}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -29408,7 +29453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00190fbea1bdb9349aa8fd05ad05bf3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpeedModel
-  baseForwardSpeed: 8
+  baseForwardSpeed: 12
   baseStrafeSpeed: 6
   staminaToSpeed:
     serializedVersion: 2
@@ -29461,6 +29506,18 @@ MonoBehaviour:
   maxStamina: 100
   currentStamina: 100
   drainRatePerSecond: 10
+--- !u!114 &2091091147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091091132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e49a9852c127a4895f53831713f8a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurfaceAudio
 --- !u!1001 &2094172028
 PrefabInstance:
   m_ObjectHideFlags: 0
