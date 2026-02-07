@@ -1,3 +1,4 @@
+using Characters.Player;
 using UnityEngine;
 
 public class StaminaBar : MonoBehaviour
