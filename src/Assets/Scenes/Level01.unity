@@ -25585,7 +25585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00190fbea1bdb9349aa8fd05ad05bf3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpeedModel
-  baseForwardSpeed: 17
+  baseForwardSpeed: 15
   baseStrafeSpeed: 8
   staminaToSpeed:
     serializedVersion: 2
@@ -26027,6 +26027,7 @@ MonoBehaviour:
   distanceToFarmerDisplay: {fileID: 1467477356}
   playerController: {fileID: 2091091137}
   farmerController: {fileID: 365322088}
+  playerStamina: {fileID: 2091091146}
 --- !u!114 &2124433177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26078,7 +26079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90adfaaa18294d4baa061a9f38fb8f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Gameplay.CaptureTimeFreezeListener
-  gameStateBus: {fileID: 0}
+  gameStateBus: {fileID: 2124433182}
   setTimeScaleZeroOnCapture: 1
 --- !u!114 &2124433181
 MonoBehaviour:
