@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4658961132225624870}
   - component: {fileID: 7640206119136280394}
   - component: {fileID: 1757227566390221056}
+  - component: {fileID: 6342872443563457175}
+  - component: {fileID: -2241991939528137369}
   m_Layer: 0
   m_Name: collideMud
   m_TagString: Untagged
@@ -111,3 +113,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4, y: 3.3208053, z: 4}
   m_Center: {x: 0, y: 0.6926557, z: 0.000000002779533}
+--- !u!114 &6342872443563457175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4447516440471432225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ad6903637d0f24baf1cb5babab685a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlowZone
+  affects: -1
+  multiplier: 0.6
+  enterSfx: {fileID: 0}
+  exitSfx: {fileID: 0}
+--- !u!114 &-2241991939528137369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4447516440471432225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12e359030f65a64aac24399ebb561ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SurfaceZone
+  footstepProfile: {fileID: 0}

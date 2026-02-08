@@ -1,3 +1,4 @@
+using SuperPorkOut.Characters.Player;
 using UnityEngine;
 
 public class StaminaBar : MonoBehaviour

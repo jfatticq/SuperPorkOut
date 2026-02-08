@@ -1,66 +1,76 @@
-using Characters.Player;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
-public class FarmerController : MonoBehaviour
+namespace SuperPorkOut.Characters.Farmer
 {
-    public float farmerSpeed = 3f;
-    
-    public PlayerController playerController;
-    
-    [Header("Footstep Audio")]
-    [SerializeField] private AudioSource footstepAudioSource;
-    [Tooltip("Distance at or below which the audio is at full volume.")]
-    public float minAudibleDistance = 1f;
-
-    [Tooltip("Distance at or beyond which the audio is inaudible.")]
-    public float maxAudibleDistance = 20f;
-
-    [Tooltip("Multiplier applied to the computed volume based on distance.")]
-    [Range(0f, 1f)] public float volumeMultiplier = 1f;
-
-    [Tooltip("When true the audio source will be switched to full 3D spatial blend and use linear rolloff.")]
-    public bool enforce3DSpatial = true;
-
-    private void Start()
+    /// <summary>
+    /// Farmer moves forward at its own speed (so distance to pig can change),
+    /// while always staying directly behind the pig laterally (X).
+    /// </summary>
+    public class FarmerController : MonoBehaviour
     {
-        if (footstepAudioSource == null)
+        [Header("Forward Motion")]
+        [SerializeField, Min(0f)] private float farmerForwardSpeed = 3f;
+
+        [Header("Lateral Follow")]
+        [Tooltip("The pig/player transform to follow.")]
+        [SerializeField] private Transform playerTransform;
+
+        public enum LateralFollowMode { Snap, Smooth }
+
+        [SerializeField] private LateralFollowMode followMode = LateralFollowMode.Smooth;
+
+        [Tooltip("How fast farmer matches player's X when in Smooth mode (units/sec).")]
+        [SerializeField, Min(0f)] private float lateralFollowSpeed = 25f;
+
+        [Tooltip("Optional clamp on how far farmer can shift in X per frame (prevents huge jumps). Set 0 for no clamp.")]
+        [SerializeField, Min(0f)] private float maxLateralStepPerFrame = 0f;
+
+        [SerializeField] private bool neverPassPig = true;
+        [SerializeField] private float minBehindDistance = 1.5f;
+
+        private void Update()
         {
-            footstepAudioSource = GetComponent<AudioSource>();
-        }
+            // Move forward constantly in world Z
+            Vector3 pos = transform.position;
+            pos.z += farmerForwardSpeed * Time.deltaTime;
 
-        if (footstepAudioSource != null && enforce3DSpatial)
-        {
-            // make sure audio is using 3D spatial settings so distance changes are noticeable
-            footstepAudioSource.spatialBlend = 1f;
-            footstepAudioSource.rolloffMode = AudioRolloffMode.Linear;
-            footstepAudioSource.minDistance = minAudibleDistance;
-            footstepAudioSource.maxDistance = maxAudibleDistance;
-        }
-    }
-
-    void Update()
-    {
-        // constant forward motion
-        Vector3 forward = farmerSpeed * Time.deltaTime * Vector3.forward;
-
-        if (playerController != null)         {
-            // match horizontal position with the player
-            Vector3 playerPos = playerController.transform.position;
-            Vector3 newPos = new Vector3(playerPos.x, transform.position.y, transform.position.z) + forward;
-            transform.position = newPos;
-            // adjust footstep volume based on distance to player
-            if (footstepAudioSource != null)
+            // Clamp to never pass pig
+            if (neverPassPig && playerTransform != null)
             {
-                float dist = Vector3.Distance(transform.position, playerPos);
-                float t = 1f - Mathf.InverseLerp(minAudibleDistance, maxAudibleDistance, dist);
-                footstepAudioSource.volume = Mathf.Clamp01(t * volumeMultiplier);
+                float maxZ = playerTransform.position.z - minBehindDistance;
+                pos.z = Mathf.Min(pos.z, maxZ);
             }
+
+            if (playerTransform != null)
+            {
+                float targetX = playerTransform.position.x;
+
+                if (followMode == LateralFollowMode.Snap)
+                {
+                    pos.x = targetX;
+                }
+                else // Smooth
+                {
+                    float newX = Mathf.MoveTowards(pos.x, targetX, lateralFollowSpeed * Time.deltaTime);
+
+                    if (maxLateralStepPerFrame > 0f)
+                    {
+                        float delta = newX - pos.x;
+                        delta = Mathf.Clamp(delta, -maxLateralStepPerFrame, maxLateralStepPerFrame);
+                        newX = pos.x + delta;
+                    }
+
+                    pos.x = newX;
+                }
+            }
+
+            transform.position = pos;
         }
-        else
+
+        // Optional: expose for other scripts
+        public void SetPlayer(Transform player)
         {
-            // if no player controller is assigned, just move forward
-            transform.position += forward;
+            playerTransform = player;
         }
     }
 }

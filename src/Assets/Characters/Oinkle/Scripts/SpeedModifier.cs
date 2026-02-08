@@ -1,4 +1,4 @@
-﻿namespace Characters.Player
+﻿namespace SuperPorkOut.Characters.Player
 {
     /// <summary>
     /// A single modifier affecting one or both planar axes.

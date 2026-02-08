@@ -1,14 +1,18 @@
+using SuperPorkOut.Levels;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+[RequireComponent(typeof(UIDocument))]
 public class PauseMenuController : MonoBehaviour
 {
-    [SerializeField] private UIDocument pauseMenuDocument;
+    private UIDocument pauseMenuDocument;
 
     [SerializeField] private PauseListener pauseListener;
 
     private void OnEnable()
     {
+        // get the UIDocument from this game object
+        pauseMenuDocument = GetComponent<UIDocument>();
         var root = pauseMenuDocument.rootVisualElement;
 
         var resumeButton = root.Q<Button>("ResumeButton");

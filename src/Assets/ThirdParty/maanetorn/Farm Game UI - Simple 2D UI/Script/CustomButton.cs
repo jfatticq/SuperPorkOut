@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace FGUIStarter
 {
@@ -13,6 +11,7 @@ namespace FGUIStarter
         Vector2 originalTextPos;
 
         bool isHeld;
+
         protected override void Awake()
         {
             base.Awake();
