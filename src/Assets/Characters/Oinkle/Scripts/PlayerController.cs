@@ -3,6 +3,15 @@ using UnityEngine;
 
 namespace SuperPorkOut.Characters.Player
 {
+    /// <summary>
+    /// Controls player movement and physics interactions in the game world, including input-driven movement, collision
+    /// response, and optional horizontal clamping.
+    /// </summary>
+    /// <remarks>This component requires a PlayerFacade to function and should be attached to the same
+    /// GameObject. It processes player input each frame, applies movement based on a configurable movement basis (such
+    /// as a camera or world anchor), and manages collision sliding and ground adhesion. When horizontal clamping is
+    /// enabled, the player's X position is restricted to a specified range. Attach this script to player-controlled
+    /// objects to enable responsive, physics-based movement.</remarks>
     [RequireComponent(typeof(PlayerFacade))]
     public class PlayerController : MonoBehaviour
     {

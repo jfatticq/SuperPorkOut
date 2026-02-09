@@ -2987,8 +2987,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 878c995fa70891c47bcd01cf07c205a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmerController
-  farmerForwardSpeed: 3
-  playerTransform: {fileID: 0}
+  farmerForwardSpeed: 10
+  playerTransform: {fileID: 2091091136}
   followMode: 1
   lateralFollowSpeed: 25
   maxLateralStepPerFrame: 0
