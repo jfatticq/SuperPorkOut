@@ -9744,7 +9744,7 @@ GameObject:
   - component: {fileID: 297996545190746220}
   - component: {fileID: 5088932546715441098}
   - component: {fileID: 5603857392888604535}
-  - component: {fileID: 194694282451373886}
+  - component: {fileID: 4203044528884755911}
   m_Layer: 0
   m_Name: TomatoPickup
   m_TagString: Untagged
@@ -9831,27 +9831,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PowerUp
   staminaAmount: 15
   pickupSfx: {fileID: 8300000, guid: 51d24086c38dce14f8cbef9c1dac1fad, type: 3}
---- !u!65 &194694282451373886
-BoxCollider:
+--- !u!114 &4203044528884755911
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8858891245824274840}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 5, y: 5, z: 5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd00acfa56995f64bbbc0c719865d566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Gameplay.Pickups.GridSnapper
+  size: {x: 5, y: 5, z: 5}
+  color: {r: 0, g: 1, b: 0, a: 0.25}
 --- !u!1001 &1432107712864157305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9866,15 +9859,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5473569773201559785, guid: fd8e0760db14a534a89257f68a4f2a8c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5473569773201559785, guid: fd8e0760db14a534a89257f68a4f2a8c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5473569773201559785, guid: fd8e0760db14a534a89257f68a4f2a8c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5473569773201559785, guid: fd8e0760db14a534a89257f68a4f2a8c, type: 3}
       propertyPath: m_LocalPosition.x
