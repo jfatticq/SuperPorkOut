@@ -9761,7 +9761,7 @@ Transform:
   m_GameObject: {fileID: 8858891245824274840}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9845,6 +9845,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Gameplay.Pickups.GridSnapper
   size: {x: 5, y: 5, z: 5}
   color: {r: 0, g: 1, b: 0, a: 0.25}
+  snapInEditMode: 1
+  snapYToGridHeight: 1
+  clampInsideGridBounds: 1
 --- !u!1001 &1432107712864157305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9913,7 +9916,8 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5465040929928713008, guid: fd8e0760db14a534a89257f68a4f2a8c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
