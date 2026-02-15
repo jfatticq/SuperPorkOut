@@ -24412,8 +24412,8 @@ MonoBehaviour:
   movementBasis: {fileID: 0}
   extraDownForce: 10
   clampX: 1
-  minX: -9
-  maxX: 9
+  minX: -11
+  maxX: 11
 --- !u!54 &2091091138
 Rigidbody:
   m_ObjectHideFlags: 0
