@@ -9744,7 +9744,7 @@ GameObject:
   - component: {fileID: 3418145718149647431}
   - component: {fileID: 994243720116220709}
   - component: {fileID: 2271704348368119698}
-  - component: {fileID: 2005537798306643808}
+  - component: {fileID: 4160414931154069034}
   m_Layer: 0
   m_Name: CabbagePickup
   m_TagString: Untagged
@@ -9761,7 +9761,7 @@ Transform:
   m_GameObject: {fileID: 6044700061577927919}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9831,27 +9831,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleRotate
   rotationSpeed: 0.75
---- !u!65 &2005537798306643808
-BoxCollider:
+--- !u!114 &4160414931154069034
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6044700061577927919}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 5, y: 5, z: 5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd00acfa56995f64bbbc0c719865d566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Gameplay.Pickups.GridSnapper
+  size: {x: 5, y: 5, z: 5}
+  color: {r: 0, g: 1, b: 0, a: 0.25}
+  snapInEditMode: 1
+  snapYToGridHeight: 1
+  clampInsideGridBounds: 1
 --- !u!1001 &311786462346707168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9920,7 +9916,8 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5723314326139808742, guid: aec8969d0290c6d4cbc587ef85a01ce4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
