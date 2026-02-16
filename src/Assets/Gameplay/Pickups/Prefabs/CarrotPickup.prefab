@@ -9746,7 +9746,7 @@ GameObject:
   - component: {fileID: 8734114025988422802}
   - component: {fileID: 9051338081563540777}
   m_Layer: 0
-  m_Name: CarrotPickup 1
+  m_Name: CarrotPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
