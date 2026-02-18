@@ -9815,10 +9815,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.6111561
   m_Height: 1.81
   m_Direction: 1
-  m_Center: {x: 0, y: 0.54, z: 0}
+  m_Center: {x: 0.07596278, y: 0.53999996, z: -0.13519323}
 --- !u!114 &8734114025988422802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9831,7 +9831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7463f603385b4b44ca47184068f5f3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Gameplay.Pickups.PowerUp
-  staminaAmount: 15
+  staminaAmount: 25
   pickupSfx: {fileID: 8300000, guid: 51d24086c38dce14f8cbef9c1dac1fad, type: 3}
 --- !u!114 &9051338081563540777
 MonoBehaviour:
@@ -9847,6 +9847,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Gameplay.Pickups.GridSnapper
   size: {x: 5, y: 5, z: 5}
   color: {r: 0, g: 1, b: 0, a: 0.25}
+  snapInEditMode: 1
+  snapYToGridHeight: 1
+  clampInsideGridBounds: 1
 --- !u!1001 &5059614840519256651
 PrefabInstance:
   m_ObjectHideFlags: 0
