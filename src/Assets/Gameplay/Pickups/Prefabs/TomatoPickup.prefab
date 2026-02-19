@@ -9789,7 +9789,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.2003692
+  m_Radius: 0.5349186
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &297996545190746220
 MonoBehaviour:
@@ -9829,7 +9829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7463f603385b4b44ca47184068f5f3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUp
-  staminaAmount: 15
+  staminaAmount: 35
   pickupSfx: {fileID: 8300000, guid: 51d24086c38dce14f8cbef9c1dac1fad, type: 3}
 --- !u!114 &4203044528884755911
 MonoBehaviour:

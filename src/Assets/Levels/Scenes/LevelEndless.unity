@@ -24831,9 +24831,8 @@ MonoBehaviour:
   - {fileID: 963651694}
   - {fileID: 1595928528}
   - {fileID: 1329393909}
-  - {fileID: 626655154}
   segmentLength: 50
-  randomizeSegments: 0
+  randomizeSegments: 1
   maxSegments: 5
   segmentGenerationInterval: 5
 --- !u!4 &2124433175
