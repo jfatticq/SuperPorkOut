@@ -7398,7 +7398,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989183058}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
@@ -7428,7 +7428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Gameplay.CapturedScreenController
   restartButtonName: RestartButton
   mainMenuButtonName: MainMenuButton
-  fadeOverlayName: CapturedOverlay
+  fadeOverlayName: FadeOverlay
   fadeToBlackSeconds: 1
   sceneFlow: {fileID: 2124433179}
 --- !u!1 &990821277 stripped
@@ -11371,7 +11371,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574165530}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 

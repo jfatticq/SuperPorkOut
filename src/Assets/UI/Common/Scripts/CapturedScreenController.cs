@@ -48,11 +48,15 @@ namespace SuperPorkOut.Levels
             doc.enabled = true;
             BindUI();
 
-            // Start fully transparent, then fade to black.
             if (fadeOverlay != null)
             {
-                fadeOverlay.style.opacity = 0f;
                 fadeOverlay.style.display = DisplayStyle.Flex;
+
+                // Ensure the element itself is fully "on"; we'll animate color alpha instead.
+                fadeOverlay.style.opacity = 1f;
+
+                // Start transparent black.
+                fadeOverlay.style.backgroundColor = new Color(0f, 0f, 0f, 0f);
             }
 
             if (fadeRoutine != null) StopCoroutine(fadeRoutine);
@@ -93,18 +97,21 @@ namespace SuperPorkOut.Levels
             if (fadeOverlay == null)
                 yield break;
 
-            float t = 0f;
-            float dur = Mathf.Max(0.0001f, fadeToBlackSeconds);
+            float time = 0f;
+            float duration = Mathf.Max(0.0001f, fadeToBlackSeconds);
 
-            while (t < dur)
+            while (time < duration)
             {
-                t += Time.unscaledDeltaTime; // UI should fade even if timeScale is 0
-                float a = Mathf.Clamp01(t / dur);
-                fadeOverlay.style.opacity = a;
+                time += Time.unscaledDeltaTime;
+                float a = Mathf.Clamp01(time / duration);
+
+                // Fade ONLY the overlay background
+                fadeOverlay.style.backgroundColor = new Color(0f, 0f, 0f, a);
+
                 yield return null;
             }
 
-            fadeOverlay.style.opacity = 1f;
+            fadeOverlay.style.backgroundColor = new Color(0f, 0f, 0f, 1f);
         }
 
         private void OnRestartClicked()
