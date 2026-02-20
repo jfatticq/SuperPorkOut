@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 8002942475503542601}
   - component: {fileID: 3287518614417454783}
   - component: {fileID: 5056527476413749308}
+<<<<<<< HEAD:src/Assets/Prefabs/Rock01.prefab
+=======
   - component: {fileID: 5316930683440181811}
+>>>>>>> main:src/Assets/Gameplay/Hazards/Prefabs/Rock01.prefab
   m_Layer: 0
   m_Name: Rock01
   m_TagString: Untagged
@@ -69,6 +72,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockingObstacle
   hitSfx: {fileID: 8300000, guid: 6cdfac43f12b7f34b9a18316b6fcc80c, type: 3}
+<<<<<<< HEAD:src/Assets/Prefabs/Rock01.prefab
+=======
 --- !u!114 &5316930683440181811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,6 +91,7 @@ MonoBehaviour:
   snapInEditMode: 1
   snapYToGridHeight: 1
   clampInsideGridBounds: 1
+>>>>>>> main:src/Assets/Gameplay/Hazards/Prefabs/Rock01.prefab
 --- !u!1001 &3694247158464463966
 PrefabInstance:
   m_ObjectHideFlags: 0

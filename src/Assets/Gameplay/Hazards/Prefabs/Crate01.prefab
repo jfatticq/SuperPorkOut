@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 9181009147835101472}
   - component: {fileID: 5968896642200703690}
   - component: {fileID: 1912952332475915095}
+<<<<<<< HEAD:src/Assets/Prefabs/Crate01.prefab
+=======
   - component: {fileID: 8163823096329406741}
+>>>>>>> main:src/Assets/Gameplay/Hazards/Prefabs/Crate01.prefab
   m_Layer: 0
   m_Name: Crate01
   m_TagString: Untagged
@@ -69,6 +72,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockingObstacle
   hitSfx: {fileID: 8300000, guid: 6cdfac43f12b7f34b9a18316b6fcc80c, type: 3}
+<<<<<<< HEAD:src/Assets/Prefabs/Crate01.prefab
+=======
 --- !u!114 &8163823096329406741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,6 +91,7 @@ MonoBehaviour:
   snapInEditMode: 1
   snapYToGridHeight: 1
   clampInsideGridBounds: 1
+>>>>>>> main:src/Assets/Gameplay/Hazards/Prefabs/Crate01.prefab
 --- !u!1001 &3550795462020421884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103,6 +109,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4151725995838774856, guid: d26dc1241d332c342b898a57f1164932, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151725995838774856, guid: d26dc1241d332c342b898a57f1164932, type: 3}
       propertyPath: m_LocalScale.z
       value: 8.75
       objectReference: {fileID: 0}
@@ -112,7 +122,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4151725995838774856, guid: d26dc1241d332c342b898a57f1164932, type: 3}
       propertyPath: m_LocalPosition.y
+<<<<<<< HEAD:src/Assets/Prefabs/Crate01.prefab
+      value: 0.483
+=======
       value: 1.5
+>>>>>>> main:src/Assets/Gameplay/Hazards/Prefabs/Crate01.prefab
       objectReference: {fileID: 0}
     - target: {fileID: 4151725995838774856, guid: d26dc1241d332c342b898a57f1164932, type: 3}
       propertyPath: m_LocalPosition.z
