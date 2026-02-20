@@ -7750,7 +7750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7862945133140292604, guid: 27e18407bc53eef4299601fa4f125048, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.5
+      value: 22.5
       objectReference: {fileID: 0}
     - target: {fileID: 7862945133140292604, guid: 27e18407bc53eef4299601fa4f125048, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18058,6 +18058,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1656644549459350760, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+      propertyPath: baseForwardSpeed
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694089771702882775, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.733
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694089771702882775, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.091001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694089771702882775, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6813503
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694089771702882775, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.189108
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694089771702882775, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6813503
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694089771702882775, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.189108
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694089771702882775, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -31.024
+      objectReference: {fileID: 0}
     - target: {fileID: 5641377965187621978, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
       propertyPath: m_Name
       value: Oinkle
