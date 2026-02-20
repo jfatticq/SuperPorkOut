@@ -16745,6 +16745,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oinkle
       objectReference: {fileID: 0}
+    - target: {fileID: 6079163532961796573, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079163532961796573, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079163532961796573, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079163532961796573, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079163532961796573, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 8889729500641335228, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
