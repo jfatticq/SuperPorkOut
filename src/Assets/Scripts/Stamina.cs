@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Stamina : MonoBehaviour
 {
+    public float Current { get; internal set; }
+
     internal float Normalized()
     {
         throw new NotImplementedException();

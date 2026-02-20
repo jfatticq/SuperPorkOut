@@ -19,6 +19,8 @@ namespace SuperPorkOut.Characters.Player
         public float Max => maxStamina;
         public float Current => currentStamina;
 
+        public object CurrentStamina { get; internal set; }
+
         /// <summary>0..1 percent full.</summary>
         public float Normalized()
         {
