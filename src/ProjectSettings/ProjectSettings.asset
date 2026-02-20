@@ -527,6 +527,9 @@ PlayerSettings:
   - m_BuildTarget: Standalone
     m_StaticBatching: 1
     m_DynamicBatching: 0
+  - m_BuildTarget: WebGL
+    m_StaticBatching: 0
+    m_DynamicBatching: 0
   m_BuildTargetShaderSettings: []
   m_BuildTargetGraphicsJobs: []
   m_BuildTargetGraphicsJobMode: []
@@ -907,7 +910,13 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Build: 0
+    Game Performance: 0
+    Legacy Analytics: 0
+    Purchasing: 0
+    UDP: 0
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -929,11 +938,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: b99a99a7-d7fd-42e7-8868-0299946d5d07
+  cloudProjectId: 02f698d3-8c46-4a82-a6f0-0d9a3bece0aa
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: SuperPorkOut
-  organizationId: icymark13
+  projectName: Super PorkOut
+  organizationId: jfattic
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
