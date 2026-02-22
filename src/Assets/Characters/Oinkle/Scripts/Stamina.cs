@@ -15,9 +15,12 @@ namespace SuperPorkOut.Characters.Player
 
         [Header("Drain")]
         [SerializeField, Min(0f)] private float drainRatePerSecond = 10f;
+        internal float CurrentStamina;
 
         public float Max => maxStamina;
         public float Current => currentStamina;
+
+        public float MaxStamina { get; internal set; }
 
         /// <summary>0..1 percent full.</summary>
         public float Normalized()
