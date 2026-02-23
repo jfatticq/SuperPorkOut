@@ -23,9 +23,5 @@ namespace SuperPorkOut.Levels
         {
             if (Instance == this) Instance = null;
         }
-
-        void Update()
-        {
-        }
     }
 }
