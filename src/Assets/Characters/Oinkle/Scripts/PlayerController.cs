@@ -43,7 +43,6 @@ namespace SuperPorkOut.Characters.Player
 
         private void Update()
         {
-            // You said InputManager exists in your project. This keeps your current approach.
             InputManager im = InputManager.Instance;
             if (im == null || im.Actions == null)
             {
