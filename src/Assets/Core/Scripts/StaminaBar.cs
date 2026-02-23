@@ -4,25 +4,18 @@ using UnityEngine.UI;
 
 public class StaminaBar : MonoBehaviour
 {
-    public Stamina stamina;   // Assign Oinkle here
+    public Stamina stamina;
     private Slider slider;
 
     void Start()
     {
         slider = GetComponent<Slider>();
-
-        if (stamina != null)
-        {
-            slider.maxValue = stamina.Max;
-        }
+        slider.minValue = 0f;
+        slider.maxValue = 1f; // normalized
     }
 
     void Update()
     {
-        if (stamina != null)
-        {
-
-            slider.value = stamina.Current;
-        }
+        slider.value = stamina.Normalized();
     }
 }
