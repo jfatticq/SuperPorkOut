@@ -32,7 +32,10 @@ namespace SuperPorkOut.Characters.Farmer
         [Tooltip("Optional clamp on how far farmer can shift in X per frame (prevents huge jumps). Set 0 for no clamp.")]
         [SerializeField, Min(0f)] private float maxLateralStepPerFrame = 0f;
 
+        [Tooltip("If true, farmer will never pass pig in Z and will maintain a minimum distance behind.")]
         [SerializeField] private bool neverPassPig = true;
+
+        [Tooltip("Minimum distance farmer should stay behind pig in Z when neverPassPig is true.")]
         [SerializeField] private float minBehindDistance = 1.5f;
 
         private float elapsedGameTime;

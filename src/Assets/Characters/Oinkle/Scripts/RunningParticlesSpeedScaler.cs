@@ -14,7 +14,7 @@ namespace SuperPorkOut.Characters.Player
 
         [Header("Speed Mapping")]
         [Tooltip("Planar speed that should produce the maximum particle size.")]
-        [SerializeField, Min(0.01f)] private float topSpeed = 8f;
+        [SerializeField, Min(0.01f)] private float topSpeed = 10f;
 
         [Tooltip("Particle size when nearly stationary.")]
         [SerializeField, Min(0f)] private float minParticleSize = 0.2f;

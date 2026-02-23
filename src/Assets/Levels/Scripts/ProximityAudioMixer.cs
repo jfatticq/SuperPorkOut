@@ -32,9 +32,6 @@ namespace SuperPorkOut.Levels
 
         private void Awake()
         {
-            if (backgroundMusic == null)
-                backgroundMusic = GetComponent<AudioSource>();
-
             baseFarmerVolume = farmerFootsteps != null ? farmerFootsteps.volume : 0f;
             basePigVolume = pigFootsteps != null ? pigFootsteps.volume : 0f;
             baseMusicVolume = backgroundMusic != null ? backgroundMusic.volume : 0f;
@@ -47,7 +44,7 @@ namespace SuperPorkOut.Levels
 
         private void Update()
         {
-            Apply(GetEffectAmount01());
+            Apply(GetEffectAmount0To1());
         }
 
         private void OnDisable()
@@ -60,11 +57,21 @@ namespace SuperPorkOut.Levels
             RestoreDefaults();
         }
 
-        private float GetEffectAmount01()
+        /// <summary>
+        /// Calculates the effect amount as a normalized value between 0 and 1 based on the proximity between the farmer
+        /// and the pig.
+        /// </summary>
+        /// <remarks>The effect amount increases as the farmer and pig are closer together. If a
+        /// proximity-to-effect curve is provided, it is used to map proximity to effect; otherwise, a linear mapping is
+        /// applied. The result is always clamped to the range [0, 1].</remarks>
+        /// <returns>A floating-point value between 0 and 1 representing the effect amount. Returns 0 if either the farmer or the
+        /// pig is not available.</returns>
+        private float GetEffectAmount0To1()
         {
             if (farmer == null || pig == null)
                 return 0f;
 
+            // Calculate proximity as a value from 0 (far) to 1 (close)
             float distance = Vector3.Distance(farmer.position, pig.position);
             float proximity01 = 1f - Mathf.Clamp01(distance / proximityDistance);
             float effectAmount = proximityToEffectCurve != null
