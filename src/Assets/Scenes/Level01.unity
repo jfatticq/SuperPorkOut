@@ -9844,6 +9844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugUIController
   player: {fileID: 2091091136}
+  stamina: {fileID: 0}
   farmer: {fileID: 365322087}
   gameStateBus: {fileID: 2124433182}
   uIRefreshInterval: 0.1
@@ -15992,28 +15993,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8889729500641335228, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
   m_PrefabInstance: {fileID: 6215808134420006448}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2091091137 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7724523090897590910, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
-  m_PrefabInstance: {fileID: 6215808134420006448}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2091091132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 169cd949deabe7d4a84e80b248b3e0a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
---- !u!114 &2091091146 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4102485973300753762, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
-  m_PrefabInstance: {fileID: 6215808134420006448}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2091091132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50e274ba64452ca44967f89764803e95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Characters.Player.Stamina
 --- !u!1001 &2094172028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16368,10 +16347,12 @@ MonoBehaviour:
   - {fileID: 1595928528}
   - {fileID: 1329393909}
   - {fileID: 626655154}
-  segmentLength: 50
+  nextSegmentZPosition: 50
+  segmentSize: 50
   randomizeSegments: 0
   maxSegments: 5
-  segmentGenerationInterval: 5
+  playerTransform: {fileID: 2091091136}
+  segmentsBehindPlayerToKeep: 1
 --- !u!4 &2124433175
 Transform:
   m_ObjectHideFlags: 0
@@ -16400,10 +16381,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d0c9ab969a624d4fa4b58cfdda3d7e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
-  distanceToFarmerDisplay: {fileID: 0}
-  playerController: {fileID: 2091091137}
-  farmerController: {fileID: 365322088}
-  playerStamina: {fileID: 2091091146}
 --- !u!114 &2124433177
 MonoBehaviour:
   m_ObjectHideFlags: 0

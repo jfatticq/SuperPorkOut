@@ -1,5 +1,3 @@
-using SuperPorkOut.Characters.Farmer;
-using SuperPorkOut.Characters.Player;
 using UnityEngine;
 
 namespace SuperPorkOut.Levels
@@ -8,22 +6,6 @@ namespace SuperPorkOut.Levels
     {
         // Singleton for easy access from other gameplay scripts
         public static LevelController Instance { get; private set; }
-
-        [Header("References")]
-        [SerializeField] GameObject distanceToFarmerDisplay;
-        [SerializeField] PlayerController playerController;
-        [SerializeField] FarmerController farmerController;
-        [SerializeField] Stamina playerStamina;
-
-        // Tracking fields
-        private float totalPlayTimeSeconds = 0f;
-        private float distanceSum = 0f;
-        private int distanceSamples = 0;
-        private int pickupsCollected = 0;
-        private int currentPlayerStamina = 0;
-
-        // Cached text component
-        private TMPro.TMP_Text _textDisplay;
 
         private void Awake()
         {
@@ -35,11 +17,6 @@ namespace SuperPorkOut.Levels
             }
 
             Instance = this;
-
-            if (distanceToFarmerDisplay != null)
-            {
-                _textDisplay = distanceToFarmerDisplay.GetComponent<TMPro.TMP_Text>();
-            }
         }
 
         private void OnDestroy()
@@ -49,48 +26,6 @@ namespace SuperPorkOut.Levels
 
         void Update()
         {
-            // track total play time while scene is loaded
-            totalPlayTimeSeconds += Time.deltaTime;
-
-            // track distance between player and farmer
-            if (playerController != null && farmerController != null)
-            {
-                float dist = Vector3.Distance(playerController.transform.position, farmerController.transform.position);
-                distanceSum += dist;
-                distanceSamples++;
-            }
-
-            if (playerStamina != null)
-            {
-                currentPlayerStamina = Mathf.RoundToInt(playerStamina.Current);
-            }
-
-            // update display if available
-            if (_textDisplay != null)
-            {
-                float avgDistance = distanceSamples > 0 ? distanceSum / distanceSamples : 0f;
-                _textDisplay.text = string.Format("Time: {0:00}:{1:00}\nAvg Dist: {2:0.00}\nPickups: {3}\nCurrent Stamina: {4}",
-                    Mathf.FloorToInt(totalPlayTimeSeconds / 60f),
-                    Mathf.FloorToInt(totalPlayTimeSeconds % 60f),
-                    avgDistance,
-                    pickupsCollected,
-                    currentPlayerStamina);
-            }
         }
-
-        // Public API for other scripts to report a pickup collected
-        public void RegisterPickupCollected()
-        {
-            pickupsCollected++;
-        }
-
-        // Expose read-only properties if needed elsewhere
-        public float TotalPlayTimeSeconds => totalPlayTimeSeconds;
-
-        public float AverageDistance => distanceSamples > 0 ? distanceSum / distanceSamples : 0f;
-
-        public int PickupsCollected => pickupsCollected;
-
-        public int CurrentPlayerStamina => currentPlayerStamina;
     }
 }
