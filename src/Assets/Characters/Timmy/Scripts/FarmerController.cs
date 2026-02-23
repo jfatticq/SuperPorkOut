@@ -11,6 +11,13 @@ namespace SuperPorkOut.Characters.Farmer
         [Header("Forward Motion")]
         [SerializeField, Min(0f)] private float farmerForwardSpeed = 3f;
 
+        [Tooltip("Multiplier over elapsed game time (x-axis in seconds) for forward speed.\nExample: 0s=1, 60s=1.5, 120s=2")]
+        [SerializeField] private AnimationCurve forwardSpeedMultiplierOverTime = new AnimationCurve(
+            new Keyframe(0f, 1f),
+            new Keyframe(60f, 1.5f),
+            new Keyframe(120f, 2f)
+        );
+
         [Header("Lateral Follow")]
         [Tooltip("The pig/player transform to follow.")]
         [SerializeField] private Transform playerTransform;
@@ -28,11 +35,21 @@ namespace SuperPorkOut.Characters.Farmer
         [SerializeField] private bool neverPassPig = true;
         [SerializeField] private float minBehindDistance = 1.5f;
 
+        private float elapsedGameTime;
+
+        private void OnEnable()
+        {
+            elapsedGameTime = 0f;
+        }
+
         private void Update()
         {
+            elapsedGameTime += Time.deltaTime;
+
             // Move forward constantly in world Z
             Vector3 pos = transform.position;
-            pos.z += farmerForwardSpeed * Time.deltaTime;
+            float currentForwardSpeed = farmerForwardSpeed * EvaluateForwardSpeedMultiplier(elapsedGameTime);
+            pos.z += currentForwardSpeed * Time.deltaTime;
 
             // Clamp to never pass pig
             if (neverPassPig && playerTransform != null)
@@ -71,6 +88,18 @@ namespace SuperPorkOut.Characters.Farmer
         public void SetPlayer(Transform player)
         {
             playerTransform = player;
+        }
+
+        private float EvaluateForwardSpeedMultiplier(float time)
+        {
+            if (forwardSpeedMultiplierOverTime == null || forwardSpeedMultiplierOverTime.length == 0)
+            {
+                return 1f;
+            }
+
+            Keyframe[] keys = forwardSpeedMultiplierOverTime.keys;
+            float clampedTime = Mathf.Clamp(time, keys[0].time, keys[keys.Length - 1].time);
+            return Mathf.Max(0f, forwardSpeedMultiplierOverTime.Evaluate(clampedTime));
         }
     }
 }
