@@ -568,6 +568,9 @@ PlayerSettings:
   - serializedVersion: 3
     m_BuildTarget: Android
     m_Formats: 03000000
+  - serializedVersion: 3
+    m_BuildTarget: WebGL
+    m_Formats: 05000000
   playModeTestRunnerEnabled: 0
   runPlayModeTestAsEditModeTest: 0
   actionOnDotNetUnhandledException: 1
@@ -938,11 +941,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: 02f698d3-8c46-4a82-a6f0-0d9a3bece0aa
+  cloudProjectId: b99a99a7-d7fd-42e7-8868-0299946d5d07
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Super PorkOut
-  organizationId: jfattic
+  projectName: SuperPorkOut
+  organizationId: icymark13
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

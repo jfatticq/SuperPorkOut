@@ -9803,6 +9803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7463f603385b4b44ca47184068f5f3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUp
+  foodType: 1
   staminaAmount: 15
   pickupSfx: {fileID: 8300000, guid: 51d24086c38dce14f8cbef9c1dac1fad, type: 3}
 --- !u!114 &994243720116220709

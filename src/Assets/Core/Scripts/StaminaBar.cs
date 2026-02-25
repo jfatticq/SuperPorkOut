@@ -1,17 +1,21 @@
 using SuperPorkOut.Characters.Player;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StaminaBar : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Stamina stamina;
+    private Slider slider;
+
     void Start()
     {
-        GetComponent<Stamina>(); 
+        slider = GetComponent<Slider>();
+        slider.minValue = 0f;
+        slider.maxValue = 1f; // normalized
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        slider.value = stamina.Normalized();
     }
 }

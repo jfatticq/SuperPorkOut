@@ -7098,6 +7098,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmerController
   farmerForwardSpeed: 3
+  forwardSpeedMultiplierOverTime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 60
+      value: 1.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 120
+      value: 2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   playerTransform: {fileID: 0}
   followMode: 1
   lateralFollowSpeed: 25
@@ -28980,10 +29013,12 @@ MonoBehaviour:
   nextSegments:
   - {fileID: 1496751261}
   - {fileID: 804130020}
-  segmentLength: 50
+  nextSegmentZPosition: 50
+  segmentSize: 50
   randomizeSegments: 0
   maxSegments: 5
-  segmentGenerationInterval: 5
+  playerTransform: {fileID: 0}
+  segmentsBehindPlayerToKeep: 1
 --- !u!4 &2124433175
 Transform:
   m_ObjectHideFlags: 0
@@ -29012,10 +29047,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d0c9ab969a624d4fa4b58cfdda3d7e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
-  distanceToFarmerDisplay: {fileID: 0}
-  playerController: {fileID: 0}
-  farmerController: {fileID: 0}
-  playerStamina: {fileID: 0}
 --- !u!1001 &2134843234
 PrefabInstance:
   m_ObjectHideFlags: 0
