@@ -16380,6 +16380,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3937366513361344296, guid: 5ed8a78a8e9b5e64ca0e9750ee7a74c9, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 2091091136}
     - target: {fileID: 7962551336742381849, guid: 5ed8a78a8e9b5e64ca0e9750ee7a74c9, type: 3}
       propertyPath: m_Name
       value: FarmerTed
