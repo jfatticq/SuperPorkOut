@@ -12,7 +12,7 @@ namespace SuperPorkOut.Characters.Farmer
         [SerializeField, Min(0f)] private float farmerForwardSpeed = 3f;
 
         [Tooltip("Multiplier over elapsed game time (x-axis in seconds) for forward speed.\nExample: 0s=1, 60s=1.5, 120s=2")]
-        [SerializeField] private AnimationCurve forwardSpeedMultiplierOverTime = new AnimationCurve(
+        [SerializeField] private AnimationCurve forwardSpeedMultiplierOverTime = new(
             new Keyframe(0f, 1f),
             new Keyframe(60f, 1.5f),
             new Keyframe(120f, 2f)
@@ -24,6 +24,7 @@ namespace SuperPorkOut.Characters.Farmer
 
         public enum LateralFollowMode { Snap, Smooth }
 
+        [Tooltip("How farmer should follow the player in X.")]
         [SerializeField] private LateralFollowMode followMode = LateralFollowMode.Smooth;
 
         [Tooltip("How fast farmer matches player's X when in Smooth mode (units/sec).")]
@@ -85,12 +86,6 @@ namespace SuperPorkOut.Characters.Farmer
             }
 
             transform.position = pos;
-        }
-
-        // Optional: expose for other scripts
-        public void SetPlayer(Transform player)
-        {
-            playerTransform = player;
         }
 
         private float EvaluateForwardSpeedMultiplier(float time)
