@@ -2108,7 +2108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7bb3e571336504ea88cc2da0b65d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StaminaBar
-  stamina: {fileID: 0}
+  stamina: {fileID: 6215808134420006449}
 --- !u!114 &203456404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2178,8 +2178,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18.359955, y: -191}
-  m_SizeDelta: {x: 325.126, y: 49.767}
+  m_AnchoredPosition: {x: 44, y: 299}
+  m_SizeDelta: {x: 593.677, y: 49.767}
   m_Pivot: {x: 0.5564716, y: -1.4808375}
 --- !u!1001 &204905918
 PrefabInstance:
@@ -13605,7 +13605,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -4.9999847, y: 0}
+  m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1746422518
@@ -18344,6 +18344,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 104962722}
   m_SourcePrefab: {fileID: 100100000, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+--- !u!114 &6215808134420006449 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4102485973300753762, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+  m_PrefabInstance: {fileID: 6215808134420006448}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091091132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e274ba64452ca44967f89764803e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Characters.Player.Stamina
 --- !u!1001 &7951852406312749260
 PrefabInstance:
   m_ObjectHideFlags: 0
