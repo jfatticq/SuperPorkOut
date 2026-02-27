@@ -19,8 +19,10 @@ namespace SuperPorkOut.Characters.Farmer
         );
 
         [Header("Lateral Follow")]
-        [Tooltip("The pig/player transform to follow.")]
-        [SerializeField] private Transform playerTransform;
+        [Tooltip("Tag used to find the pig/player transform to follow.")]
+        [SerializeField] private string playerTag = "Player";
+
+        private Transform playerTransform;
 
         public enum LateralFollowMode { Snap, Smooth }
 
@@ -44,10 +46,16 @@ namespace SuperPorkOut.Characters.Farmer
         private void OnEnable()
         {
             elapsedGameTime = 0f;
+            CachePlayerTransform();
         }
 
         private void Update()
         {
+            if (playerTransform == null)
+            {
+                CachePlayerTransform();
+            }
+
             elapsedGameTime += Time.deltaTime;
 
             // Move forward constantly in world Z
@@ -98,6 +106,14 @@ namespace SuperPorkOut.Characters.Farmer
             Keyframe[] keys = forwardSpeedMultiplierOverTime.keys;
             float clampedTime = Mathf.Clamp(time, keys[0].time, keys[keys.Length - 1].time);
             return Mathf.Max(0f, forwardSpeedMultiplierOverTime.Evaluate(clampedTime));
+        }
+
+        private void CachePlayerTransform()
+        {
+            if (string.IsNullOrWhiteSpace(playerTag)) return;
+
+            GameObject playerObject = GameObject.FindGameObjectWithTag(playerTag);
+            playerTransform = playerObject != null ? playerObject.transform : null;
         }
     }
 }
