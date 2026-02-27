@@ -175,7 +175,6 @@ GameObject:
   - component: {fileID: 9153507278463073515}
   - component: {fileID: 4587451358670233196}
   - component: {fileID: 9007712316319379826}
-  - component: {fileID: 5158261987752687762}
   - component: {fileID: 4253353329413669155}
   - component: {fileID: 4102485973300753762}
   - component: {fileID: 9189953327322245090}
@@ -388,8 +387,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Characters.FootstepSurfaceAudio
   actor: 0
-  footstepsSource: {fileID: 9153507278463073515}
+  footstepsSource: {fileID: 0}
   defaultFootstepLoopClip: {fileID: 0}
+  movementRigidbody: {fileID: 0}
+  minSpeedForPitch: 0
+  maxSpeedForPitch: 20
+  minPitch: 0.75
+  maxPitch: 1.35
+  pitchLerpSpeed: 10
 --- !u!114 &9007712316319379826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,21 +407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e260d453143c74647a758a85c7acff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Characters.SurfaceZoneAudioTrigger
---- !u!114 &5158261987752687762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5641377965187621978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42e49a9852c127a4895f53831713f8a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Characters.FootstepSurfaceAudio
-  actor: 0
-  footstepsSource: {fileID: 9153507278463073515}
-  defaultFootstepLoopClip: {fileID: 0}
 --- !u!114 &4253353329413669155
 MonoBehaviour:
   m_ObjectHideFlags: 0
