@@ -1,115 +1,85 @@
-using SuperPorkOut.Gameplay.Hazards;
+﻿using SuperPorkOut.Gameplay.Hazards;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
-public class FootstepSurfaceAudio : MonoBehaviour
+namespace SuperPorkOut.Characters
 {
-    [Header("Audio")]
-    [SerializeField] private AudioSource footstepsSource;
-
-    [Header("Default")]
-    [SerializeField] private AudioClip defaultFootstepsClip;
-
-    [Header("Zone Selection")]
-    [Tooltip("Higher wins if multiple surface zones overlap.")]
-    [SerializeField] private bool useHighestPriority = true;
-
-    private readonly Dictionary<SurfaceZone, int> activeZones = new();
-
-    private void Awake()
+    public enum FootstepActor
     {
-        if (footstepsSource == null)
-            footstepsSource = GetComponent<AudioSource>();
-
-        // Initialize to default
-        ApplyClip(defaultFootstepsClip);
+        Oinkle = 0,
+        Farmer = 1
     }
 
-    /// <summary>Call when you enter a surface zone.</summary>
-    public void EnterZone(SurfaceZone zone)
+    [RequireComponent(typeof(AudioSource))]
+    public class FootstepSurfaceAudio : MonoBehaviour
     {
-        if (zone == null) return;
-        int priority = GetZonePriority(zone);
-        activeZones[zone] = priority;
-        Refresh();
-    }
+        [Header("Actor")]
+        [SerializeField] private FootstepActor actor = FootstepActor.Oinkle;
 
-    /// <summary>Call when you exit a surface zone.</summary>
-    public void ExitZone(SurfaceZone zone)
-    {
-        if (zone == null) return;
-        activeZones.Remove(zone);
-        Refresh();
-    }
+        [Header("Playback")]
+        [SerializeField] private AudioSource footstepsSource;
+        [SerializeField] private AudioClip defaultFootstepLoopClip;
 
-    private int GetZonePriority(SurfaceZone zone)
-    {
-        // Optional: add a ZonePriority component if you want.
-        // For now: if not present, priority = 0.
-        var prio = zone.GetComponent<ZonePriority>();
-        return prio != null ? prio.priority : 0;
-    }
+        private readonly HashSet<SurfaceZone> activeZones = new();
 
-    private void Refresh()
-    {
-        AudioClip desired = defaultFootstepsClip;
-
-        if (activeZones.Count > 0)
+        private void Awake()
         {
-            SurfaceZone bestZone = null;
-            int bestPriority = int.MinValue;
+            if (footstepsSource == null)
+                footstepsSource = GetComponent<AudioSource>();
 
-            foreach (var kvp in activeZones)
+            if (defaultFootstepLoopClip == null && footstepsSource != null)
+                defaultFootstepLoopClip = footstepsSource.clip;
+
+            ApplyClip(defaultFootstepLoopClip);
+        }
+
+        /// <summary>Call when you enter a surface zone.</summary>
+        public void EnterZone(SurfaceZone zone)
+        {
+            if (zone == null) return;
+
+            activeZones.Add(zone);
+            Refresh();
+        }
+
+        /// <summary>Call when you exit a surface zone.</summary>
+        public void ExitZone(SurfaceZone zone)
+        {
+            if (zone == null) return;
+            activeZones.Remove(zone);
+            Refresh();
+        }
+
+        private void Refresh()
+        {
+            AudioClip desiredClip = defaultFootstepLoopClip;
+            foreach (var zone in activeZones)
             {
-                var zone = kvp.Key;
-                var prio = kvp.Value;
+                if (zone == null) continue;
 
-                if (bestZone == null)
+                var zoneClip = zone.GetFootstepLoopClip(actor);
+                if (zoneClip != null)
                 {
-                    bestZone = zone;
-                    bestPriority = prio;
-                    continue;
-                }
-
-                if (useHighestPriority)
-                {
-                    if (prio > bestPriority)
-                    {
-                        bestZone = zone;
-                        bestPriority = prio;
-                    }
-                }
-                else
-                {
-                    // lowest wins variant if you ever want it
-                    if (prio < bestPriority)
-                    {
-                        bestZone = zone;
-                        bestPriority = prio;
-                    }
+                    desiredClip = zoneClip;
+                    break;
                 }
             }
 
-            if (bestZone != null && bestZone.FootstepProfile != null)
-                desired = bestZone.FootstepProfile.footstepLoopClip;
+            ApplyClip(desiredClip);
         }
 
-        ApplyClip(desired);
-    }
+        private void ApplyClip(AudioClip clip)
+        {
+            if (footstepsSource == null) return;
+            if (footstepsSource.clip == clip) return;
 
-    private void ApplyClip(AudioClip clip)
-    {
-        if (footstepsSource == null) return;
+            bool wasPlaying = footstepsSource.isPlaying;
 
-        if (footstepsSource.clip == clip) return; // no change
+            footstepsSource.clip = clip;
 
-        bool wasPlaying = footstepsSource.isPlaying;
-
-        footstepsSource.clip = clip;
-
-        // If your footsteps are a loop, keep it seamless-ish:
-        if (wasPlaying)
-            footstepsSource.Play();
+            // If your footsteps are a loop, keep it seamless-ish:
+            if (wasPlaying)
+                footstepsSource.Play();
+        }
     }
 }
