@@ -1,6 +1,5 @@
 using SuperPorkOut.Core;
 using System.Collections;
-using UnityEditor.MPE;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -51,6 +50,10 @@ namespace SuperPorkOut.Screens.MainMenu
                 Debug.LogWarning("MainMenuController: Could not find a Button named or labeled 'QuitButton' in the UIDocument.");
                 return;
             }
+
+            playButton.text = GameState.IsTutorialCompleted
+                ? "Escape Endless!"
+                : "Test the Fence!";
 
             playButton.clicked += OnPlayClicked;
             guideButton.clicked += OnGuideClicked;
