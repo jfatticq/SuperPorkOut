@@ -1,3 +1,4 @@
+using SuperPorkOut.Core;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,6 +10,7 @@ using UnityEngine.UIElements;
 public class SettingsSceneController : MonoBehaviour
 {
     private Button backButton;
+    private Button resetGameStateButton;
 
     private void OnEnable()
     {
@@ -24,6 +26,12 @@ public class SettingsSceneController : MonoBehaviour
         }
 
         backButton.clicked += GoBack;
+
+        resetGameStateButton = root.Q<Button>("ResetGameStateButton");
+        if (resetGameStateButton != null)
+        {
+            resetGameStateButton.clicked += ResetGameState;
+        }
 
         // Enable UI input mode
         InputManager.Instance.SetMode(GameMode.Settings);
@@ -142,6 +150,9 @@ public class SettingsSceneController : MonoBehaviour
         if (backButton != null)
             backButton.clicked -= GoBack;
 
+        if (resetGameStateButton != null)
+            resetGameStateButton.clicked -= ResetGameState;
+
         if (InputManager.Instance != null)
             InputManager.Instance.Actions.UI.Cancel.performed -= OnCancel;
     }
@@ -154,5 +165,10 @@ public class SettingsSceneController : MonoBehaviour
     private void GoBack()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    private static void ResetGameState()
+    {
+        GameState.IsTutorialCompleted = false;
     }
 }
