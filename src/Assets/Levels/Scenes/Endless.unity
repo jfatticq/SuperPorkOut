@@ -18213,6 +18213,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4587451358670233196, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+      propertyPath: footstepsSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4587451358670233196, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+      propertyPath: maxSpeedForPitch
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5641377965187621978, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
       propertyPath: m_Name
       value: Oinkle
