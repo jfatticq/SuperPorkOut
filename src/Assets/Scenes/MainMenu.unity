@@ -512,6 +512,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c58808362d5874bb4da1b5738448fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuController
+  TutorialSceneName: Level01
+  EndlessSceneName: TEST_ENDLESS_A
+  GuideSceneName: Guide
+  SettingsSceneName: Settings
 --- !u!114 &65445685
 MonoBehaviour:
   m_ObjectHideFlags: 0

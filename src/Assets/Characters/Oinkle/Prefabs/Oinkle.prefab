@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00190fbea1bdb9349aa8fd05ad05bf3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpeedModel
-  baseForwardSpeed: 15
+  baseForwardSpeed: 13
   baseStrafeSpeed: 8
   staminaToSpeed:
     serializedVersion: 2
