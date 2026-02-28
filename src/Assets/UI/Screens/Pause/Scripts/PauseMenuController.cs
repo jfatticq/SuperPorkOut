@@ -32,4 +32,29 @@ public class PauseMenuController : MonoBehaviour
             mainMenuButton.clicked += pauseListener.QuitToMainMenu;
         }
     }
+
+    private void OnDisable()
+    {
+        if (pauseMenuDocument == null) return;
+
+        var root = pauseMenuDocument.rootVisualElement;
+
+        var resumeButton = root.Q<Button>("ResumeButton");
+        if (resumeButton != null)
+        {
+            resumeButton.clicked += pauseListener.Resume;
+        }
+
+        var restartButton = root.Q<Button>("RestartButton");
+        if (restartButton != null)
+        {
+            restartButton.clicked += pauseListener.RestartLevel;
+        }
+
+        var mainMenuButton = root.Q<Button>("MainMenuButton");
+        if (mainMenuButton != null)
+        {
+            mainMenuButton.clicked += pauseListener.QuitToMainMenu;
+        }
+    }
 }
