@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(UIDocument))]
 public class GuideSceneController : MonoBehaviour
 {
+    [SerializeField] private string TutorialSceneName = "Level01";
+
     private Button backButton;
 
     private Button tutorialButton;
