@@ -1,4 +1,5 @@
 using SuperPorkOut.Characters.Player;
+using SuperPorkOut.Core;
 using SuperPorkOut.Levels;
 using UnityEngine;
 
@@ -37,6 +38,8 @@ namespace SuperPorkOut.Gameplay
 
         private void OnLevelEnded(LevelEndedEvent evt)
         {
+            GameState.IsTutorialCompleted = true;
+
             // -------- Pig --------
             if (freezePig && evt.pig != null)
             {

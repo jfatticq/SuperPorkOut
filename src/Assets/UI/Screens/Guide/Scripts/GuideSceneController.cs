@@ -8,6 +8,8 @@ public class GuideSceneController : MonoBehaviour
 {
     private Button backButton;
 
+    private Button tutorialButton;
+
     private void OnEnable()
     {
         var uiDoc = GetComponent<UIDocument>();
@@ -23,6 +25,16 @@ public class GuideSceneController : MonoBehaviour
 
         backButton.clicked += GoBack;
 
+        tutorialButton = root.Q<Button>("btnTutorial");
+
+        if (tutorialButton == null)
+        {
+            Debug.LogWarning("GuideSceneController: Tutorial button not found.");
+            return;
+        }
+
+        tutorialButton.clicked += GoToTutorial;
+
         // Enable UI input mode
         InputManager.Instance.SetMode(GameMode.Guide);
 
@@ -34,6 +46,9 @@ public class GuideSceneController : MonoBehaviour
     {
         if (backButton != null)
             backButton.clicked -= GoBack;
+
+        if (tutorialButton != null)
+            tutorialButton.clicked -= GoToTutorial;
 
         if (InputManager.Instance != null)
             InputManager.Instance.Actions.UI.Cancel.performed -= OnCancel;
@@ -47,5 +62,10 @@ public class GuideSceneController : MonoBehaviour
     private void GoBack()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    private void GoToTutorial()
+    {
+        SceneManager.LoadScene("Level01");
     }
 }
