@@ -9,6 +9,8 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(UIDocument))]
 public class SettingsSceneController : MonoBehaviour
 {
+    [SerializeField] private string MainMenuSceneName = "MainMenu";
+
     private Button backButton;
     private Button resetGameStateButton;
 
@@ -164,7 +166,7 @@ public class SettingsSceneController : MonoBehaviour
 
     private void GoBack()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(MainMenuSceneName);
     }
 
     private static void ResetGameState()

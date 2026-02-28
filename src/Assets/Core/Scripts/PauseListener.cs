@@ -6,6 +6,8 @@ public class PauseListener : MonoBehaviour
 {
     [SerializeField] private UIDocument pauseMenuDocument;
 
+    [SerializeField] private string MainMenuSceneName = "MainMenu";
+
     private bool isPaused = false;
 
     private void OnEnable()
@@ -99,6 +101,6 @@ public class PauseListener : MonoBehaviour
     public void QuitToMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(MainMenuSceneName);
     }
 }
