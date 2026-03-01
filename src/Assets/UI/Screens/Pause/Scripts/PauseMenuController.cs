@@ -10,7 +10,6 @@ public class PauseMenuController : MonoBehaviour
 
     private void OnEnable()
     {
-        // get the UIDocument from this game object
         pauseMenuDocument = GetComponent<UIDocument>();
         var root = pauseMenuDocument.rootVisualElement;
 
@@ -42,19 +41,19 @@ public class PauseMenuController : MonoBehaviour
         var resumeButton = root.Q<Button>("ResumeButton");
         if (resumeButton != null)
         {
-            resumeButton.clicked += pauseListener.Resume;
+            resumeButton.clicked -= pauseListener.Resume;
         }
 
         var restartButton = root.Q<Button>("RestartButton");
         if (restartButton != null)
         {
-            restartButton.clicked += pauseListener.RestartLevel;
+            restartButton.clicked -= pauseListener.RestartLevel;
         }
 
         var mainMenuButton = root.Q<Button>("MainMenuButton");
         if (mainMenuButton != null)
         {
-            mainMenuButton.clicked += pauseListener.QuitToMainMenu;
+            mainMenuButton.clicked -= pauseListener.QuitToMainMenu;
         }
     }
 }

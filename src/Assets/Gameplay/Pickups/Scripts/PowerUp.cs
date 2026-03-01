@@ -25,12 +25,12 @@ namespace SuperPorkOut.Gameplay.Pickups
         [SerializeField, Min(0f)] private float staminaAmount = 15f;
 
         [Tooltip("Sound effect to play when the power-up is picked up.")]
-        [SerializeField] private AudioClip pickupSfx;
+        [SerializeField] private AudioSource sfxSource;
 
         public void OnPlayerEnter(PlayerFacade player)
         {
-            if (pickupSfx != null)
-                AudioSource.PlayClipAtPoint(pickupSfx, transform.position);
+            if (sfxSource != null)
+                sfxSource.PlayOneShot(sfxSource.clip);
 
             PickedUp?.Invoke(
                 new PickupEventData(foodType, staminaAmount, transform.position)

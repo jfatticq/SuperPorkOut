@@ -12,7 +12,10 @@ public class SettingsSceneController : MonoBehaviour
     [SerializeField] private string MainMenuSceneName = "MainMenu";
 
     private Button backButton;
-    private Button resetGameStateButton;
+    private Button resetGameStateButton; 
+    private SliderInt masterVolumeSlider;
+    private SliderInt musicVolumeSlider;
+    private SliderInt fxVolumeSlider;
 
     private void OnEnable()
     {
@@ -48,6 +51,36 @@ public class SettingsSceneController : MonoBehaviour
         // Populate Fullscreen Mode dropdown if present
         var fullscreenDropdown = root.Q<DropdownField>("FullscreenDropDown");
         PopulateFullScreenDropDown(fullscreenDropdown);
+
+        var audioSettings = AudioSettingsService.Instance;
+        if (audioSettings != null)
+        {
+            masterVolumeSlider = root.Q<SliderInt>("MasterVolumeSlider");
+            musicVolumeSlider = root.Q<SliderInt>("MusicVolumeSlider");
+            fxVolumeSlider = root.Q<SliderInt>("FXVolumeSlider");
+
+            if (masterVolumeSlider != null)
+            {
+                masterVolumeSlider.SetValueWithoutNotify(audioSettings.GetMasterVolumePercent());
+                masterVolumeSlider.RegisterValueChangedCallback(OnMasterVolumeChanged);
+            }
+
+            if (musicVolumeSlider != null)
+            {
+                musicVolumeSlider.SetValueWithoutNotify(audioSettings.GetMusicVolumePercent());
+                musicVolumeSlider.RegisterValueChangedCallback(OnMusicVolumeChanged);
+            }
+
+            if (fxVolumeSlider != null)
+            {
+                fxVolumeSlider.SetValueWithoutNotify(audioSettings.GetFxVolumePercent());
+                fxVolumeSlider.RegisterValueChangedCallback(OnFxVolumeChanged);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("SettingsSceneController: AudioSettingsService.Instance is null. Volume sliders will not be wired.");
+        }
     }
 
     private static void PopulateResolutionDropDown(DropdownField resolutionDropdown)
@@ -157,6 +190,15 @@ public class SettingsSceneController : MonoBehaviour
 
         if (InputManager.Instance != null)
             InputManager.Instance.Actions.UI.Cancel.performed -= OnCancel;
+
+        if (masterVolumeSlider != null)
+            masterVolumeSlider.UnregisterValueChangedCallback(OnMasterVolumeChanged);
+
+        if (musicVolumeSlider != null)
+            musicVolumeSlider.UnregisterValueChangedCallback(OnMusicVolumeChanged);
+
+        if (fxVolumeSlider != null)
+            fxVolumeSlider.UnregisterValueChangedCallback(OnFxVolumeChanged);
     }
 
     private void OnCancel(InputAction.CallbackContext _)
@@ -172,5 +214,26 @@ public class SettingsSceneController : MonoBehaviour
     private static void ResetGameState()
     {
         GameState.IsTutorialCompleted = false;
+    }
+
+    private void OnMasterVolumeChanged(ChangeEvent<int> evt)
+    {
+        var audioSvc = AudioSettingsService.Instance;
+        if (audioSvc != null)
+            audioSvc.SetMasterVolumePercent(evt.newValue);
+    }
+
+    private void OnMusicVolumeChanged(ChangeEvent<int> evt)
+    {
+        var audioSvc = AudioSettingsService.Instance;
+        if (audioSvc != null)
+            audioSvc.SetMusicVolumePercent(evt.newValue);
+    }
+
+    private void OnFxVolumeChanged(ChangeEvent<int> evt)
+    {
+        var audioSvc = AudioSettingsService.Instance;
+        if (audioSvc != null)
+            audioSvc.SetFxVolumePercent(evt.newValue);
     }
 }

@@ -611,6 +611,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7d79ae7e220914ab3d8886717f4473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GuideSceneController
+  MainMenuSceneName: MainMenu
+  TutorialSceneName: Level01
 --- !u!114 &684850447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1081,7 +1083,7 @@ AudioSource:
   m_GameObject: {fileID: 1037851523}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8633822500588454264, guid: 558120fc62beba3498a4616111ef651c, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 835bb2a95349ee14eac9fa1739c15e53, type: 3}
   m_PlayOnAwake: 1
