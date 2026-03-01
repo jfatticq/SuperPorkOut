@@ -61,6 +61,18 @@ namespace SuperPorkOut.Screens.MainMenu
             quitButton.clicked += OnQuitClicked;
         }
 
+        private void OnDisable()
+        {
+            if (playButton != null)
+                playButton.clicked -= OnPlayClicked;
+            if (guideButton != null)
+                guideButton.clicked -= OnGuideClicked;
+            if (settingsButton != null)
+                settingsButton.clicked -= OnSettingsClicked;
+            if (quitButton != null)
+                quitButton.clicked -= OnQuitClicked;
+        }
+
         private void OnPlayClicked()
         {
             StartCoroutine(StartLevel());

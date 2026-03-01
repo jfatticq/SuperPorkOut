@@ -6,6 +6,9 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(UIDocument))]
 public class GuideSceneController : MonoBehaviour
 {
+    [SerializeField] private string MainMenuSceneName = "MainMenu";
+    [SerializeField] private string TutorialSceneName = "Level01";
+
     private Button backButton;
 
     private Button tutorialButton;
@@ -61,11 +64,11 @@ public class GuideSceneController : MonoBehaviour
 
     private void GoBack()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(MainMenuSceneName);
     }
 
     private void GoToTutorial()
     {
-        SceneManager.LoadScene("Level01");
+        SceneManager.LoadScene(TutorialSceneName);
     }
 }

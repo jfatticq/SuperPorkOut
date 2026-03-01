@@ -10,9 +10,16 @@ public class PauseMenuController : MonoBehaviour
 
     private void OnEnable()
     {
-        // get the UIDocument from this game object
+        if (pauseListener == null)
+        {
+            Debug.LogError($"{nameof(PauseMenuController)} requires a {nameof(PauseListener)} reference.");
+            return;
+        }
+
         pauseMenuDocument = GetComponent<UIDocument>();
         var root = pauseMenuDocument.rootVisualElement;
+
+        if (root == null) return;
 
         var resumeButton = root.Q<Button>("ResumeButton");
         if (resumeButton != null)
@@ -30,6 +37,33 @@ public class PauseMenuController : MonoBehaviour
         if (mainMenuButton != null)
         {
             mainMenuButton.clicked += pauseListener.QuitToMainMenu;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (pauseMenuDocument == null || pauseListener == null) return;
+
+        var root = pauseMenuDocument.rootVisualElement;
+
+        if (root == null) return;
+
+        var resumeButton = root.Q<Button>("ResumeButton");
+        if (resumeButton != null)
+        {
+            resumeButton.clicked -= pauseListener.Resume;
+        }
+
+        var restartButton = root.Q<Button>("RestartButton");
+        if (restartButton != null)
+        {
+            restartButton.clicked -= pauseListener.RestartLevel;
+        }
+
+        var mainMenuButton = root.Q<Button>("MainMenuButton");
+        if (mainMenuButton != null)
+        {
+            mainMenuButton.clicked -= pauseListener.QuitToMainMenu;
         }
     }
 }
