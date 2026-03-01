@@ -10,8 +10,16 @@ public class PauseMenuController : MonoBehaviour
 
     private void OnEnable()
     {
+        if (pauseListener == null)
+        {
+            Debug.LogError($"{nameof(PauseMenuController)} requires a {nameof(PauseListener)} reference.");
+            return;
+        }
+
         pauseMenuDocument = GetComponent<UIDocument>();
         var root = pauseMenuDocument.rootVisualElement;
+
+        if (root == null) return;
 
         var resumeButton = root.Q<Button>("ResumeButton");
         if (resumeButton != null)
@@ -34,9 +42,11 @@ public class PauseMenuController : MonoBehaviour
 
     private void OnDisable()
     {
-        if (pauseMenuDocument == null) return;
+        if (pauseMenuDocument == null || pauseListener == null) return;
 
         var root = pauseMenuDocument.rootVisualElement;
+
+        if (root == null) return;
 
         var resumeButton = root.Q<Button>("ResumeButton");
         if (resumeButton != null)

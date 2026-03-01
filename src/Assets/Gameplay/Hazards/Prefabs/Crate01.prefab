@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71aeba0bedb7774988ee8ec03e17d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockingObstacle
-  hitSfx: {fileID: 8300000, guid: 6cdfac43f12b7f34b9a18316b6fcc80c, type: 3}
+  sfxSource: {fileID: 8621580924742350892}
 --- !u!114 &8163823096329406741
 MonoBehaviour:
   m_ObjectHideFlags: 0

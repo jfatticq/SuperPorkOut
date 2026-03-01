@@ -27,15 +27,20 @@ namespace SuperPorkOut.Gameplay.Pickups
         [Tooltip("Sound effect to play when the power-up is picked up.")]
         [SerializeField] private AudioSource sfxSource;
 
+        private bool isCollected;
+
         public void OnPlayerEnter(PlayerFacade player)
         {
-            if (sfxSource != null)
-                sfxSource.PlayOneShot(sfxSource.clip);
+            if (isCollected)
+                return;
 
-            PickedUp?.Invoke(
-                new PickupEventData(foodType, staminaAmount, transform.position)
-            );
-            Destroy(gameObject);
+            isCollected = true;
+
+            sfxSource.Play();
+            // Disable visuals/collider so it looks "gone"
+            //GetComponent<Renderer>().enabled = false;
+            GetComponent<Collider>().enabled = false;
+            Destroy(gameObject, sfxSource.clip.length);
         }
 
         public void OnPlayerExit(PlayerFacade player) { }

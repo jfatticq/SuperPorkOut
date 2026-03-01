@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71aeba0bedb7774988ee8ec03e17d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Gameplay.Hazards.BlockingObstacle
-  sfxSource: {fileID: 0}
+  sfxSource: {fileID: 1181838816634696082}
 --- !u!82 &1181838816634696082
 AudioSource:
   m_ObjectHideFlags: 0
