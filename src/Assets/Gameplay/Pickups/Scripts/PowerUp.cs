@@ -36,13 +36,46 @@ namespace SuperPorkOut.Gameplay.Pickups
 
             isCollected = true;
 
-            sfxSource.Play();
-            // Disable visuals/collider so it looks "gone"
-            //GetComponent<Renderer>().enabled = false;
+            PickedUp?.Invoke(new PickupEventData(foodType, staminaAmount, transform.position));
+
+            PlayPickupSound();
+
             GetComponent<Collider>().enabled = false;
-            Destroy(gameObject, sfxSource.clip.length);
+            foreach (var r in GetComponentsInChildren<Renderer>())
+                r.enabled = false;
+
+            Destroy(gameObject);
         }
 
         public void OnPlayerExit(PlayerFacade player) { }
+
+        private void PlayPickupSound()
+        {
+            if (sfxSource == null || sfxSource.clip == null)
+                return;
+
+            // AudioSource is on a child object — detach it so it survives
+            // the PowerUp being destroyed, preserving all mixer/spatial settings.
+            if (sfxSource.gameObject != gameObject)
+            {
+                sfxSource.transform.SetParent(null);
+                sfxSource.Play();
+                Destroy(sfxSource.gameObject, sfxSource.clip.length);
+                return;
+            }
+
+            // AudioSource is on this same object — clone essential settings
+            // into a temporary source so the sound still routes through the mixer.
+            var temp = new GameObject("PickupSFX_Temp");
+            temp.transform.position = transform.position;
+            var src = temp.AddComponent<AudioSource>();
+            src.clip = sfxSource.clip;
+            src.outputAudioMixerGroup = sfxSource.outputAudioMixerGroup;
+            src.volume = sfxSource.volume;
+            src.pitch = sfxSource.pitch;
+            src.spatialBlend = sfxSource.spatialBlend;
+            src.Play();
+            Destroy(temp, sfxSource.clip.length);
+        }
     }
 }
