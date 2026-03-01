@@ -6,7 +6,8 @@ namespace SuperPorkOut.Gameplay.Hazards
     [RequireComponent(typeof(Collider))]
     public class BlockingObstacle : MonoBehaviour, IPlayerCollisionInteractable
     {
-        [SerializeField] private AudioClip hitSfx;
+        [Tooltip("The sound effect to play when the player collides with this obstacle.")]
+        [SerializeField] private AudioSource sfxSource;
 
         private void Reset()
         {
@@ -15,8 +16,8 @@ namespace SuperPorkOut.Gameplay.Hazards
 
         public void OnPlayerCollision(PlayerFacade player, CollisionInfo hit)
         {
-            if (hitSfx != null)
-                AudioSource.PlayClipAtPoint(hitSfx, hit.Point);
+            if (sfxSource != null)
+                sfxSource.PlayOneShot(sfxSource.clip);
         }
     }
 }

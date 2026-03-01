@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4903889466741362447}
   - component: {fileID: 550601642944242045}
+  - component: {fileID: 6314618845630202157}
   m_Layer: 0
   m_Name: GameRoot
   m_TagString: Untagged
@@ -44,3 +45,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5312c64b4eeee4ea3957dff31f171f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
+--- !u!114 &6314618845630202157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688935372897693536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a9691c4fc99b343b069db80c0f937e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioSettingsService
+  audioMixer: {fileID: 24100000, guid: 558120fc62beba3498a4616111ef651c, type: 2}
+  masterVolumeParameter: MasterVolumeDb
+  musicVolumeParameter: MusicVolumeDb
+  fxVolumeParameter: FxVolumeDb
+  defaultMasterVolumePercent: 80
+  defaultMusicVolumePercent: 80
+  defaultFxVolumePercent: 80

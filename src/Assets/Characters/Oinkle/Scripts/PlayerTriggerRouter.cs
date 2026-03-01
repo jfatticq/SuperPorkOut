@@ -2,6 +2,12 @@
 
 namespace SuperPorkOut.Characters.Player
 {
+    /// <summary>
+    /// Routes player trigger interactions by detecting when the player enters or exits trigger colliders.
+    /// </summary>
+    /// <remarks>This component requires a PlayerFacade to function correctly. It listens for trigger events
+    /// and notifies the player of interactions with triggerable objects. Ensure that the colliders used for triggers
+    /// have the appropriate components attached to them.</remarks>
     [RequireComponent(typeof(PlayerFacade))]
     public class PlayerTriggerRouter : MonoBehaviour
     {
@@ -32,6 +38,7 @@ namespace SuperPorkOut.Characters.Player
         {
             // Prefer component on collider, fallback to parents.
             if (other.TryGetComponent<IPlayerTriggerInteractable>(out target)) return true;
+
             target = other.GetComponentInParent<IPlayerTriggerInteractable>();
             return target != null;
         }

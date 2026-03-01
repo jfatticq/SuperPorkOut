@@ -1591,7 +1591,7 @@ AudioSource:
   m_GameObject: {fileID: 166540750}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8633822500588454264, guid: 558120fc62beba3498a4616111ef651c, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 835bb2a95349ee14eac9fa1739c15e53, type: 3}
   m_PlayOnAwake: 1
@@ -17582,6 +17582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseListener
   pauseMenuDocument: {fileID: 1856916376}
+  MainMenuSceneName: MainMenu
 --- !u!114 &2124433179
 MonoBehaviour:
   m_ObjectHideFlags: 0
