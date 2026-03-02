@@ -1,4 +1,5 @@
 using SuperPorkOut.Core;
+using SuperPorkOut.Levels;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,7 +10,8 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(UIDocument))]
 public class SettingsSceneController : MonoBehaviour
 {
-    [SerializeField] private string MainMenuSceneName = "MainMenu";
+    [Header("Actions")]
+    [SerializeField] private SceneFlow sceneFlow;
 
     private Button backButton;
     private Button resetGameStateButton; 
@@ -208,7 +210,12 @@ public class SettingsSceneController : MonoBehaviour
 
     private void GoBack()
     {
-        SceneManager.LoadScene(MainMenuSceneName);
+        if (sceneFlow == null)
+        {
+            Debug.LogError("[SettingsSceneController] SceneFlow not assigned.");
+            return;
+        }
+        sceneFlow.GoToMainMenu();
     }
 
     private static void ResetGameState()

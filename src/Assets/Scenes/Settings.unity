@@ -1279,6 +1279,7 @@ GameObject:
   - component: {fileID: 783905397}
   - component: {fileID: 783905399}
   - component: {fileID: 783905400}
+  - component: {fileID: 783905401}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -1351,6 +1352,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneModeSetter
   mode: 3
+--- !u!114 &783905401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783905396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5000d32ff0eb5bb468f44c412db6e1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Levels.SceneFlow
+  mainMenuSceneName: MainMenu
 --- !u!1001 &830924290
 PrefabInstance:
   m_ObjectHideFlags: 0

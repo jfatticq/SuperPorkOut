@@ -1,3 +1,6 @@
+using SuperPorkOut.Core;
+using SuperPorkOut.Gameplay.Pickups;
+using SuperPorkOut.Levels;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -7,6 +10,7 @@ public class PauseMenuController : MonoBehaviour
     private UIDocument pauseMenuDocument;
 
     [SerializeField] private PauseListener pauseListener;
+    [SerializeField] private RunStatsRecorder runStatsRecorder;
 
     private void OnEnable()
     {
@@ -38,6 +42,12 @@ public class PauseMenuController : MonoBehaviour
         {
             mainMenuButton.clicked += pauseListener.QuitToMainMenu;
         }
+
+        var statsLabel = root.Q<Label>("StatsLabel");
+        if (statsLabel != null && runStatsRecorder != null)
+        {
+            statsLabel.text = FormatCurrentRunStats();
+        }
     }
 
     private void OnDisable()
@@ -65,5 +75,21 @@ public class PauseMenuController : MonoBehaviour
         {
             mainMenuButton.clicked -= pauseListener.QuitToMainMenu;
         }
+    }
+
+    private string FormatCurrentRunStats()
+    {
+        float dist = runStatsRecorder.DistanceTraveled;
+        float time = runStatsRecorder.ElapsedSeconds;
+        var pickups = runStatsRecorder.PickupCounts;
+
+        int mins = Mathf.FloorToInt(time) / 60;
+        int secs = Mathf.FloorToInt(time) % 60;
+
+        return $"Distance: {dist:0.0}m\n"
+             + $"Time: {mins:00}:{secs:00}\n"
+             + $"Carrots: {pickups[FoodType.Carrot]}  "
+             + $"Cabbages: {pickups[FoodType.Cabbage]}  "
+             + $"Tomatoes: {pickups[FoodType.Tomato]}";
     }
 }

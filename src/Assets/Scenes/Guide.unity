@@ -804,6 +804,7 @@ GameObject:
   - component: {fileID: 684850447}
   - component: {fileID: 684850446}
   - component: {fileID: 684850448}
+  - component: {fileID: 684850449}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -839,8 +840,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7d79ae7e220914ab3d8886717f4473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GuideSceneController
-  MainMenuSceneName: MainMenu
   TutorialSceneName: Level01
+  sceneFlow: {fileID: 684850449}
 --- !u!114 &684850447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -877,6 +878,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneModeSetter
   mode: 4
+--- !u!114 &684850449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684850444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5000d32ff0eb5bb468f44c412db6e1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Levels.SceneFlow
+  mainMenuSceneName: MainMenu
 --- !u!1 &702004154
 GameObject:
   m_ObjectHideFlags: 0
