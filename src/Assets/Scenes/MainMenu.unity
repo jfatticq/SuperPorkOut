@@ -637,7 +637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuController
   TutorialSceneName: Level01
-  EndlessSceneName: Endless
+  EndlessSceneName: TEST_ENDLESS_A
   GuideSceneName: Guide
   SettingsSceneName: Settings
 --- !u!114 &65445685
