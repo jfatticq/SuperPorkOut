@@ -1,13 +1,16 @@
+using SuperPorkOut.Levels;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(UIDocument))]
+[RequireComponent(typeof(SceneFlow))]
 public class GuideSceneController : MonoBehaviour
 {
-    [SerializeField] private string MainMenuSceneName = "MainMenu";
     [SerializeField] private string TutorialSceneName = "Level01";
+    
+    private SceneFlow sceneFlow;
 
     private Button backButton;
 
@@ -15,6 +18,8 @@ public class GuideSceneController : MonoBehaviour
 
     private void OnEnable()
     {
+        sceneFlow = GetComponent<SceneFlow>();
+
         var uiDoc = GetComponent<UIDocument>();
         var root = uiDoc.rootVisualElement;
 
@@ -64,7 +69,12 @@ public class GuideSceneController : MonoBehaviour
 
     private void GoBack()
     {
-        SceneManager.LoadScene(MainMenuSceneName);
+        if (sceneFlow == null)
+        {
+            Debug.LogError("[GuideSceneController] SceneFlow not assigned.");
+            return;
+        }
+        sceneFlow.GoToMainMenu();
     }
 
     private void GoToTutorial()
