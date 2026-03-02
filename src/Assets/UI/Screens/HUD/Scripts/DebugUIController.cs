@@ -1,7 +1,7 @@
 using SuperPorkOut.Characters.Player;
+using SuperPorkOut.Core;
 using SuperPorkOut.Gameplay.Pickups;
 using SuperPorkOut.Levels;
-using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,7 +18,7 @@ namespace SuperPorkOut.Screens.HUD
     public class DebugUIController : MonoBehaviour
     {
         [Header("Scene References")]
-        [Tooltip("Player transform used for distance traveled and distance-to-farmer.")]
+        [Tooltip("Player transform used for distance-to-farmer.")]
         [SerializeField] private Transform player;
 
         [SerializeField] private Stamina stamina;
@@ -28,6 +28,9 @@ namespace SuperPorkOut.Screens.HUD
 
         [Tooltip("Reference to the GameStateBus for subscribing to game state events (captured, level end).")]
         [SerializeField] private GameStateBus gameStateBus;
+
+        [Tooltip("Reference to the RunStatsRecorder for reading current run stats.")]
+        [SerializeField] private RunStatsRecorder runStatsRecorder;
 
         [Header("Update Settings")]
         [Tooltip("How often (seconds) to refresh label text while the UI is enabled. 0 = every frame.")]
@@ -44,12 +47,6 @@ namespace SuperPorkOut.Screens.HUD
         private Label lblDistanceTraveled;
         private Label lblStamina;
 
-        // Stats
-        private float elapsedSeconds;
-        private float distanceTraveled;
-        private Vector3 lastPlayerPos;
-        private bool hasLastPlayerPos;
-
         // Cached strings so we can keep "updating" even when UI is hidden/disabled
         private string cachedDistanceToFarmerText = "Distance To Farmer: ";
         private string cachedPickupsCollectedText = "Pickups Collected: ";
@@ -62,14 +59,6 @@ namespace SuperPorkOut.Screens.HUD
         // Freeze on capture/end
         private bool frozenGameOver;
 
-        private readonly Dictionary<FoodType, int> pickupCounts = new() 
-        {
-            { FoodType.Carrot, 0 },
-            { FoodType.Cabbage, 0 },
-            { FoodType.Tomato, 0 },
-            { FoodType.Other, 0 }
-        };
-
         private void Awake()
         {
             debugUIDocument = GetComponent<UIDocument>();
@@ -78,57 +67,60 @@ namespace SuperPorkOut.Screens.HUD
             if (debugUIDocument != null)
                 debugUIDocument.enabled = false;
 
-            // Initialize distance traveled tracking
-            if (player != null)
-            {
-                lastPlayerPos = player.position;
-                hasLastPlayerPos = true;
-            }
-
             if (stamina == null && player != null)
                 stamina = player.GetComponent<Stamina>();
-
-            RebuildPickupsText();
         }
 
         private void OnEnable()
         {
             WireInputAction();
             WireGameState();
-
-            PowerUp.PickedUp += OnPowerUpPickedUp;
         }
 
         private void OnDisable()
         {
             UnwireInputAction();
             UnwireGameState();
-
-            PowerUp.PickedUp -= OnPowerUpPickedUp;
         }
 
         private void Update()
         {
-            // If we’ve hit game over (captured/ended), freeze values permanently.
             if (frozenGameOver)
             {
-                // Still allow toggling UI visibility via input; values stay frozen.
                 PushToUIIfVisible();
                 return;
             }
 
-            // PauseListener uses Time.timeScale = 0, so Time.deltaTime will be 0 while paused.
-            // That naturally freezes elapsedSeconds and distanceTraveled accumulation.
-            TickRunStats();
-
-            // Distance to farmer: you can decide if you want it live during pause.
-            // With timeScale=0, positions won’t change anyway in most setups; this is fine.
             UpdateCachedDistanceToFarmer();
+            UpdateCachedRunStats();
+            UpdateCachedStamina();
 
-            // Cache formatted text (always up to date even if hidden)
-            cachedTimeElapsedText = $"Time Elapsed: {FormatTime(elapsedSeconds)}";
-            cachedDistanceTraveledText = $"Distance Traveled: {distanceTraveled:0.0} m";
+            PushToUIIfVisible();
+        }
 
+        private void UpdateCachedRunStats()
+        {
+            if (runStatsRecorder == null) return;
+
+            cachedTimeElapsedText = $"Time Elapsed: {FormatTime(runStatsRecorder.ElapsedSeconds)}";
+            cachedDistanceTraveledText = $"Distance Traveled: {runStatsRecorder.DistanceTraveled:0.0} m";
+
+            var pickups = runStatsRecorder.PickupCounts;
+            var sb = new StringBuilder(64);
+            sb.Append("Pickups Collected: ");
+            sb.Append("Carrot: ").Append(pickups[FoodType.Carrot]);
+            sb.Append(" | Cabbage: ").Append(pickups[FoodType.Cabbage]);
+            sb.Append(" | Tomato: ").Append(pickups[FoodType.Tomato]);
+
+            int other = pickups[FoodType.Other];
+            if (other > 0)
+                sb.Append(" | Other: ").Append(other);
+
+            cachedPickupsCollectedText = sb.ToString();
+        }
+
+        private void UpdateCachedStamina()
+        {
             if (stamina != null)
             {
                 float cur = stamina.Current;
@@ -140,31 +132,6 @@ namespace SuperPorkOut.Screens.HUD
             {
                 cachedStaminaText = "Stamina: ";
             }
-
-            PushToUIIfVisible();
-        }
-
-        private void TickRunStats()
-        {
-            // Only tick during Playing mode. This is the key “don’t sample while paused/end” guard.
-            if (InputManager.Instance == null || InputManager.Instance.Mode != GameMode.Playing)
-                return;
-
-            // Elapsed time
-            elapsedSeconds += Time.deltaTime;
-
-            // Distance traveled
-            if (player == null) return;
-
-            if (!hasLastPlayerPos)
-            {
-                lastPlayerPos = player.position;
-                hasLastPlayerPos = true;
-                return;
-            }
-
-            distanceTraveled += Vector3.Distance(lastPlayerPos, player.position);
-            lastPlayerPos = player.position;
         }
 
         private void UpdateCachedDistanceToFarmer()
@@ -231,7 +198,7 @@ namespace SuperPorkOut.Screens.HUD
             }
             else
             {
-                // Drop references; they’re invalid when UIDocument disabled
+                // Drop references; theyï¿½re invalid when UIDocument disabled
                 lblDistanceToFarmer = null;
                 lblPickupsCollected = null;
                 lblTimeElapsed = null;
@@ -294,47 +261,12 @@ namespace SuperPorkOut.Screens.HUD
         {
             frozenGameOver = true;
 
-            // Lock in last cached values (distance-to-farmer etc.)
             UpdateCachedDistanceToFarmer();
-            cachedTimeElapsedText = $"Time Elapsed: {FormatTime(elapsedSeconds)}";
-            cachedDistanceTraveledText = $"Distance Traveled: {distanceTraveled:0.0} m";
+            UpdateCachedRunStats();
+            UpdateCachedStamina();
 
-            // If visible, push once
             nextUIRefreshTime = 0f;
             PushToUIIfVisible();
-        }
-
-        private void OnPowerUpPickedUp(PickupEventData pickupEventData)
-        {
-            if (!pickupCounts.ContainsKey(pickupEventData.Type))
-                pickupCounts[pickupEventData.Type] = 0;
-
-            pickupCounts[pickupEventData.Type]++;
-
-            RebuildPickupsText();
-
-            if (debugUIDocument.enabled)
-            {
-                EnsureUIReferences();
-                if (lblPickupsCollected != null)
-                    lblPickupsCollected.text = cachedPickupsCollectedText;
-            }
-        }
-
-        private void RebuildPickupsText()
-        {
-            var sb = new StringBuilder(64);
-
-            sb.Append("Pickups Collected: ");
-            sb.Append("Carrot: ").Append(pickupCounts[FoodType.Carrot]);
-            sb.Append(" | Cabbage: ").Append(pickupCounts[FoodType.Cabbage]);
-            sb.Append(" | Tomato: ").Append(pickupCounts[FoodType.Tomato]);
-
-            int other = pickupCounts[FoodType.Other];
-            if (other > 0)
-                sb.Append(" | Other: ").Append(other);
-
-            cachedPickupsCollectedText = sb.ToString();
         }
 
         private static string FormatTime(float seconds)

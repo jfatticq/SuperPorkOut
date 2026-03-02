@@ -1,4 +1,5 @@
 using SuperPorkOut.Core;
+using SuperPorkOut.UI;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,8 @@ namespace SuperPorkOut.Screens.MainMenu
         [SerializeField] private string EndlessSceneName = "Endless";
         [SerializeField] private string GuideSceneName = "Guide";
         [SerializeField] private string SettingsSceneName = "Settings";
+
+        private static readonly WaitForSeconds _waitForSeconds1 = new(1);
 
         private Button playButton;
         private Button guideButton;
@@ -59,6 +62,9 @@ namespace SuperPorkOut.Screens.MainMenu
             guideButton.clicked += OnGuideClicked;
             settingsButton.clicked += OnSettingsClicked;
             quitButton.clicked += OnQuitClicked;
+
+            var statsPanel = root.Q<RunStatsPanel>("RunStatsPanel");
+            statsPanel?.Refresh(EndlessSceneName);
         }
 
         private void OnDisable()
@@ -99,7 +105,7 @@ namespace SuperPorkOut.Screens.MainMenu
 
         IEnumerator StartLevel()
         {
-            yield return new WaitForSeconds(1);
+            yield return _waitForSeconds1;
 
             var nextScene = GameState.IsTutorialCompleted
                 ? EndlessSceneName
