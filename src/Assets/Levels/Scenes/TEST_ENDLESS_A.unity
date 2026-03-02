@@ -2170,6 +2170,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4112504727747986, guid: d82a0024cf3346b4695544dd461fb02b, type: 3}
   m_PrefabInstance: {fileID: 237249156}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &244826511 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5432632013391342487, guid: b701b94326e1ad84c9aaf3ffe94e16c2, type: 3}
+  m_PrefabInstance: {fileID: 916353514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &257661931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7563,6 +7568,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7007387949208601537, guid: b701b94326e1ad84c9aaf3ffe94e16c2, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 2077825019}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10366,6 +10375,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2893272649769284938, guid: aaf3010ca8842f54b9478011d14296f5, type: 3}
+      propertyPath: stamina
+      value: 
+      objectReference: {fileID: 6215808134420006449}
     - target: {fileID: 5180344824761099356, guid: aaf3010ca8842f54b9478011d14296f5, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -16514,6 +16527,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 194614823105658161, guid: f734332cf9807404da93e6475f8e126e, type: 3}
   m_PrefabInstance: {fileID: 2071436980}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &2077825019 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7895706579468272400, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+  m_PrefabInstance: {fileID: 6215808134420006448}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2083048034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16714,6 +16732,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3008297296413678391, guid: cb422acdc199d6e42910f589b81c283b, type: 3}
   m_PrefabInstance: {fileID: 2092079965}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &2093590763 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 7007387949208601537, guid: b701b94326e1ad84c9aaf3ffe94e16c2, type: 3}
+  m_PrefabInstance: {fileID: 916353514}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2094172028
 PrefabInstance:
@@ -17501,6 +17524,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+--- !u!114 &6215808134420006449 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4102485973300753762, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+  m_PrefabInstance: {fileID: 6215808134420006448}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091091132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e274ba64452ca44967f89764803e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Characters.Player.Stamina
 --- !u!1001 &7951852406312749260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17821,11 +17855,11 @@ PrefabInstance:
     - target: {fileID: 773220550188529285, guid: 2b70f5abdb1124143b4bad7314d0f26b, type: 3}
       propertyPath: layer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 244826511}
     - target: {fileID: 773220550188529285, guid: 2b70f5abdb1124143b4bad7314d0f26b, type: 3}
       propertyPath: canvas
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2093590763}
     - target: {fileID: 773220550188529285, guid: 2b70f5abdb1124143b4bad7314d0f26b, type: 3}
       propertyPath: playerTransform
       value: 
