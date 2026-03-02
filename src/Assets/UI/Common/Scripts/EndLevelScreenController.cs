@@ -1,5 +1,7 @@
 using SuperPorkOut.Levels;
+using SuperPorkOut.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace SuperPorkOut.Gameplay
@@ -29,6 +31,7 @@ namespace SuperPorkOut.Gameplay
         {
             doc.enabled = true;
             Bind();
+            RefreshStatsPanel();
         }
 
         public void Hide()
@@ -83,6 +86,16 @@ namespace SuperPorkOut.Gameplay
                 return;
             }
             sceneFlow.GoToMainMenu();
+        }
+
+        private void RefreshStatsPanel()
+        {
+            var root = doc.rootVisualElement;
+            if (root == null) return;
+
+            var panel = root.Q<RunStatsPanel>("RunStatsPanel");
+            if (panel != null)
+                panel.Refresh(SceneManager.GetActiveScene().name);
         }
     }
 }

@@ -1,4 +1,5 @@
 using SuperPorkOut.Core;
+using SuperPorkOut.UI;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -59,6 +60,10 @@ namespace SuperPorkOut.Screens.MainMenu
             guideButton.clicked += OnGuideClicked;
             settingsButton.clicked += OnSettingsClicked;
             quitButton.clicked += OnQuitClicked;
+
+            var statsPanel = root.Q<RunStatsPanel>("RunStatsPanel");
+            if (statsPanel != null)
+                statsPanel.Refresh(EndlessSceneName);
         }
 
         private void OnDisable()

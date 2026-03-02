@@ -1,0 +1,55 @@
+.run-stats-panel {
+    padding: 8px;
+    margin: 8px 0;
+}
+
+.run-stats-panel__header {
+    -unity-font-style: bold;
+    font-size: 18px;
+    margin-bottom: 6px;
+    -unity-text-align: upper-center;
+    color: rgb(80, 50, 20);
+}
+
+.run-stats-panel__table {
+    flex-direction: column;
+}
+
+.run-stats-panel__row {
+    flex-direction: row;
+    padding: 3px 0;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(0, 0, 0, 0.15);
+}
+
+.run-stats-panel__header-row {
+    border-bottom-width: 2px;
+    border-bottom-color: rgba(0, 0, 0, 0.3);
+}
+
+.run-stats-panel__header-row > .run-stats-panel__cell {
+    -unity-font-style: bold;
+}
+
+.run-stats-panel__cell {
+    font-size: 12px;
+    flex-grow: 1;
+    flex-basis: 0;
+    -unity-text-align: upper-center;
+    color: rgb(60, 40, 15);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.run-stats-panel__rank-cell {
+    flex-grow: 0.3;
+    min-width: 24px;
+}
+
+.run-stats-panel__empty {
+    font-size: 13px;
+    -unity-text-align: upper-center;
+    -unity-font-style: italic;
+    color: rgba(80, 50, 20, 0.6);
+    padding: 12px 0;
+}
