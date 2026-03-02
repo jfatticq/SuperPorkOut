@@ -8,7 +8,6 @@
             <ui:Button text="Guide" name="GuideButton" class="guide-button mainmenu-button" />
             <ui:Button text="Settings" name="SettingsButton" class="mainmenu-button settings-button" />
             <ui:Button text="Go Back To Sleep" name="QuitButton" class="mainmenu-button quit-button" />
-            <spui:RunStatsPanel name="RunStatsPanel" scene-name="Endless" title="Best Runs" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

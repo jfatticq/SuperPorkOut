@@ -2064,7 +2064,7 @@ GameObject:
   - component: {fileID: 203456403}
   m_Layer: 5
   m_Name: StaminaBar
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15392,6 +15392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenuController
   pauseListener: {fileID: 2124433178}
+  runStatsRecorder: {fileID: 0}
 --- !u!1001 &1863723341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17859,6 +17860,7 @@ GameObject:
   - component: {fileID: 2124433179}
   - component: {fileID: 2124433180}
   - component: {fileID: 2124433183}
+  - component: {fileID: 2124433186}
   - component: {fileID: 2124433184}
   - component: {fileID: 2124433185}
   m_Layer: 0
@@ -17949,7 +17951,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseListener
   pauseMenuDocument: {fileID: 1856916376}
-  MainMenuSceneName: MainMenu
 --- !u!114 &2124433179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18087,6 +18088,19 @@ MonoBehaviour:
   playerTransform: {fileID: 2091091136}
   verticalOffset: 2
   screenOffsetPixels: {x: 0, y: 40}
+--- !u!114 &2124433186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124433173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baebf4e5351e3b74da8e618f49a16223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Core.RunStatsRecorder
+  player: {fileID: 2091091136}
 --- !u!1001 &2124471680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18973,9 +18987,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3937366513361344296, guid: 5ed8a78a8e9b5e64ca0e9750ee7a74c9, type: 3}
+      propertyPath: forwardAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3937366513361344296, guid: 5ed8a78a8e9b5e64ca0e9750ee7a74c9, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 2091091136}
+    - target: {fileID: 4210242848092643564, guid: 5ed8a78a8e9b5e64ca0e9750ee7a74c9, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7962551336742381849, guid: 5ed8a78a8e9b5e64ca0e9750ee7a74c9, type: 3}
       propertyPath: m_Name
       value: FarmerTed

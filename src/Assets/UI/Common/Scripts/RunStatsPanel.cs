@@ -9,13 +9,13 @@ namespace SuperPorkOut.UI
     public partial class RunStatsPanel : VisualElement
     {
         [UxmlAttribute]
-        public string sceneName { get; set; } = "Endless";
+        public string SceneName { get; set; } = "Endless";
 
         [UxmlAttribute]
-        public string title { get; set; } = "Best Runs";
+        public string Title { get; set; } = "Best Runs";
 
         [UxmlAttribute]
-        public bool autoLoad { get; set; } = true;
+        public bool AutoLoad { get; set; } = true;
 
         private Label titleLabel;
         private VisualElement tableContainer;
@@ -36,7 +36,7 @@ namespace SuperPorkOut.UI
             style.marginTop = 8;
             style.marginBottom = 8;
 
-            titleLabel = new Label(title);
+            titleLabel = new Label(Title);
             titleLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
             titleLabel.style.fontSize = 18;
             titleLabel.style.marginBottom = 6;
@@ -59,21 +59,21 @@ namespace SuperPorkOut.UI
 
         private void OnAttach(AttachToPanelEvent evt)
         {
-            if (autoLoad)
+            if (AutoLoad)
                 Refresh();
         }
 
         public void Refresh()
         {
-            Refresh(sceneName);
+            Refresh(SceneName);
         }
 
         public void Refresh(string scene)
         {
-            sceneName = scene;
-            titleLabel.text = title;
+            SceneName = scene;
+            titleLabel.text = Title;
 
-            var runs = RunStatsStore.GetTopRuns(sceneName);
+            var runs = RunStatsStore.GetTopRuns(SceneName);
             PopulateTable(runs);
         }
 

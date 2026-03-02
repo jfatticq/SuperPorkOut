@@ -7,10 +7,13 @@ using UnityEngine.SceneManagement;
 
 namespace SuperPorkOut.Core
 {
+    [RequireComponent(typeof(GameStateBus))]
     public class RunStatsRecorder : MonoBehaviour
     {
+        [Tooltip("The player transform to track distance traveled. If not set, distance will not be tracked.")]
         [SerializeField] private Transform player;
-        [SerializeField] private GameStateBus gameStateBus;
+
+        private GameStateBus gameStateBus;
 
         private float elapsedSeconds;
         private float distanceTraveled;
@@ -38,8 +41,7 @@ namespace SuperPorkOut.Core
                 hasLastPlayerPos = true;
             }
 
-            if (gameStateBus == null)
-                gameStateBus = FindFirstObjectByType<GameStateBus>();
+            gameStateBus = GetComponent<GameStateBus>();
         }
 
         private void OnEnable()
