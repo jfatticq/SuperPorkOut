@@ -1,5 +1,5 @@
 .back-button {
-    background-image: url("project://database/Assets/ThirdParty/maanetorn/Farm%20Game%20UI%20-%20Simple%202D%20UI/Sprites/256x256/button_purple_default_2.png?fileID=2800000&guid=11d6874f56486e342aee373a9becbe2d&type=3#button_purple_default_2");
+    background-image: url("project://database/Assets/ThirdParty/maanetorn/Farm%20Game%20UI%20-%20Simple%202D%20UI/Sprites/128x128/button_purple_default_1.png?fileID=2800000&guid=3bbde98424c90834cb0d97ffae539a8f&type=3#button_purple_default_1");
     background-size: cover;
     background-color: transparent;
     border-width: 0;

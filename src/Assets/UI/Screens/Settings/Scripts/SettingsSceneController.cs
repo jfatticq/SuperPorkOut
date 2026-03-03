@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(UIDocument))]
+[RequireComponent(typeof(SceneFlow))]
 public class SettingsSceneController : MonoBehaviour
 {
     [Header("Actions")]
