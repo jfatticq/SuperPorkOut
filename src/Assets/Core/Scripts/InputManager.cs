@@ -7,6 +7,7 @@ public enum GameMode
     Playing,
     Paused,
     Settings,
+    Credits,
     Guide
 }
 
@@ -78,6 +79,7 @@ public class InputManager : MonoBehaviour
             case GameMode.Paused:
             case GameMode.MainMenu:
             case GameMode.Settings:
+            case GameMode.Credits:
             case GameMode.Guide:
                 Actions.UI.Enable();
                 break;
