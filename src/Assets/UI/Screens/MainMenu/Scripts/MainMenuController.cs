@@ -14,12 +14,14 @@ namespace SuperPorkOut.Screens.MainMenu
         [SerializeField] private string EndlessSceneName = "Endless";
         [SerializeField] private string GuideSceneName = "Guide";
         [SerializeField] private string SettingsSceneName = "Settings";
+        [SerializeField] private string CreditsSceneName = "Credits";
 
         private static readonly WaitForSeconds _waitForSeconds1 = new(1);
 
         private Button playButton;
         private Button guideButton;
         private Button settingsButton;
+        private Button creditsButton;
         private Button quitButton;
 
         private void OnEnable()
@@ -47,6 +49,13 @@ namespace SuperPorkOut.Screens.MainMenu
                 return;
             }
 
+            creditsButton = root.Q<Button>("CreditsButton");
+            if (creditsButton == null)
+            {
+                Debug.LogWarning("MainMenuController: Could not find a Button named or labeled 'CreditsButton' in the UIDocument.");
+                return;
+            }
+
             quitButton = root.Q<Button>("QuitButton");
             if (quitButton == null)
             {
@@ -61,6 +70,7 @@ namespace SuperPorkOut.Screens.MainMenu
             playButton.clicked += OnPlayClicked;
             guideButton.clicked += OnGuideClicked;
             settingsButton.clicked += OnSettingsClicked;
+            creditsButton.clicked += OnCreditsClicked;
             quitButton.clicked += OnQuitClicked;
 
             var statsPanel = root.Q<RunStatsPanel>("RunStatsPanel");
@@ -75,6 +85,8 @@ namespace SuperPorkOut.Screens.MainMenu
                 guideButton.clicked -= OnGuideClicked;
             if (settingsButton != null)
                 settingsButton.clicked -= OnSettingsClicked;
+            if (creditsButton != null)
+                creditsButton.clicked -= OnCreditsClicked;
             if (quitButton != null)
                 quitButton.clicked -= OnQuitClicked;
         }
@@ -92,6 +104,11 @@ namespace SuperPorkOut.Screens.MainMenu
         private void OnSettingsClicked()
         {
             SceneManager.LoadScene(SettingsSceneName);
+        }
+
+        private void OnCreditsClicked()
+        {
+            SceneManager.LoadScene(CreditsSceneName);
         }
 
         private void OnQuitClicked()
