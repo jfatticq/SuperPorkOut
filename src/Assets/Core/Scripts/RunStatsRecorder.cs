@@ -33,6 +33,9 @@ namespace SuperPorkOut.Core
         public float ElapsedSeconds => elapsedSeconds;
         public IReadOnlyDictionary<FoodType, int> PickupCounts => pickupCounts;
 
+        public object Veggiecount { get; internal set; }
+        public object Distancecount { get; internal set; }
+
         private void Awake()
         {
             if (player != null)
