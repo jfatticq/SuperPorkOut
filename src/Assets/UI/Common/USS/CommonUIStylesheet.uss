@@ -9,12 +9,3 @@
 .back-button:active {
     background-image: url("project://database/Assets/ThirdParty/maanetorn/Farm%20Game%20UI%20-%20Simple%202D%20UI/Sprites/256x256/button_purple_pressed_2.png?fileID=2800000&guid=1f506ae0dc9c328488f3bdc88801ace6&type=3#button_purple_pressed_2");
 }
-
-.guide-text {
-    -unity-font-definition: url("project://database/Assets/ThirdParty/maanetorn/Farm%20Game%20UI%20-%20Simple%202D%20UI/Font/LilitaOne-Regular.ttf?fileID=12800000&guid=b0b25c7081699704f917d02e28f31692&type=3#LilitaOne-Regular");
-    white-space: normal;
-    -unity-text-align: upper-center;
-    font-size: 18px;
-    -unity-text-outline-width: 1px;
-    -unity-text-outline-color: rgb(0, 0, 0);
-}

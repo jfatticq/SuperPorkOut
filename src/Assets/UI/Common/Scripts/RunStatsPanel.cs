@@ -29,29 +29,29 @@ namespace SuperPorkOut.UI
 
         private void BuildStructure()
         {
-            style.paddingTop = 8;
-            style.paddingBottom = 8;
+            style.paddingTop = 4;
+            style.paddingBottom = 4;
             style.paddingLeft = 8;
             style.paddingRight = 8;
-            style.marginTop = 8;
-            style.marginBottom = 8;
+            style.marginTop = 4;
+            style.marginBottom = 4;
 
             titleLabel = new Label(Title);
             titleLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
-            titleLabel.style.fontSize = 18;
-            titleLabel.style.marginBottom = 6;
+            titleLabel.style.fontSize = 12;
+            titleLabel.style.marginBottom = 2;
             titleLabel.style.unityTextAlign = TextAnchor.UpperCenter;
-            titleLabel.style.color = new Color(0.31f, 0.20f, 0.08f);
+            titleLabel.style.color = new Color(0.31f, 0.5f, 0.8f);
             Add(titleLabel);
 
             tableContainer = new VisualElement();
             Add(tableContainer);
 
             emptyLabel = new Label("No runs recorded yet.");
-            emptyLabel.style.fontSize = 13;
+            emptyLabel.style.fontSize = 10;
             emptyLabel.style.unityTextAlign = TextAnchor.UpperCenter;
             emptyLabel.style.unityFontStyleAndWeight = FontStyle.Italic;
-            emptyLabel.style.color = new Color(0.31f, 0.20f, 0.08f, 0.6f);
+            emptyLabel.style.color = new Color(0.31f, 0.5f, 0.8f);
             emptyLabel.style.paddingTop = 12;
             emptyLabel.style.paddingBottom = 12;
             Add(emptyLabel);
@@ -117,8 +117,8 @@ namespace SuperPorkOut.UI
             row.style.paddingBottom = 3;
             row.style.borderBottomWidth = isHeader ? 2 : 1;
             row.style.borderBottomColor = isHeader
-                ? new Color(0, 0, 0, 0.3f)
-                : new Color(0, 0, 0, 0.15f);
+                ? new Color(0, 0, 0)
+                : new Color(0, 0, 0);
 
             var fontStyle = isHeader ? FontStyle.Bold : FontStyle.Normal;
 
