@@ -51,7 +51,7 @@ namespace SuperPorkOut.Core
             if (gameStateBus != null)
             {
                 gameStateBus.LevelEnded += OnLevelEnded;
-                gameStateBus.LevelEnded += OnCaptured;
+                gameStateBus.Captured += OnCaptured;
             }
         }
 
@@ -62,7 +62,7 @@ namespace SuperPorkOut.Core
             if (gameStateBus != null)
             {
                 gameStateBus.LevelEnded -= OnLevelEnded;
-                gameStateBus.LevelEnded -= OnCaptured;
+                gameStateBus.Captured -= OnCaptured;
             }
         }
 
@@ -117,7 +117,7 @@ namespace SuperPorkOut.Core
             RunStatsStore.Load(entry.sceneName);
         }
 
-        private void OnCaptured(LevelEndedEvent evt)
+        private void OnCaptured(CapturedEvent evt)
         {
             frozen = true;
 
