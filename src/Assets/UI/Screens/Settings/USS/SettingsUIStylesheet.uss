@@ -1,2 +1,7 @@
-:root {
+.reset-button {
+    background-image: url("project://database/Assets/ThirdParty/maanetorn/Farm%20Game%20UI%20-%20Simple%202D%20UI/Sprites/256x256/button_red_default_2.png?fileID=2800000&guid=e7cc71f7591cdfc4584df69c9acce28a&type=3#button_red_default_2");
+}
+
+.reset-button:active {
+    background-image: url("project://database/Assets/ThirdParty/maanetorn/Farm%20Game%20UI%20-%20Simple%202D%20UI/Sprites/256x256/button_red_pressed_2.png?fileID=2800000&guid=fef7475174d129d488ffdac3175fed69&type=3#button_red_pressed_2");
 }
