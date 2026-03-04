@@ -6869,6 +6869,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6532418184880043476, guid: 7363086f938f3c3418f66d0b75fcbde5, type: 3}
   m_PrefabInstance: {fileID: 809352119}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &820685455 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 486977115313357031, guid: 2b70f5abdb1124143b4bad7314d0f26b, type: 3}
+  m_PrefabInstance: {fileID: 8855202625699185418}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -10353,7 +10358,7 @@ MonoBehaviour:
   stamina: {fileID: 0}
   farmer: {fileID: 365322087}
   gameStateBus: {fileID: 2124433182}
-  runStatsRecorder: {fileID: 0}
+  runStatsRecorder: {fileID: 2124433192}
   uIRefreshInterval: 0.1
 --- !u!1001 &1310851032
 PrefabInstance:
@@ -17161,7 +17166,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8208856269490850103, guid: 2b70f5abdb1124143b4bad7314d0f26b, type: 3}
   m_PrefabInstance: {fileID: 8855202625699185418}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 820685455}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1964913ec89622f42b4a1a4a26def5d6, type: 3}
@@ -17172,7 +17177,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2717816933699740727, guid: 2b70f5abdb1124143b4bad7314d0f26b, type: 3}
   m_PrefabInstance: {fileID: 8855202625699185418}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 820685455}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5000d32ff0eb5bb468f44c412db6e1fc, type: 3}
@@ -17183,12 +17188,25 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1669758178470565374, guid: 2b70f5abdb1124143b4bad7314d0f26b, type: 3}
   m_PrefabInstance: {fileID: 8855202625699185418}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 820685455}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3454098271bad894aa5415b78675cae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Gameplay.GameStateBus
+--- !u!114 &2124433192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820685455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baebf4e5351e3b74da8e618f49a16223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Core.RunStatsRecorder
+  player: {fileID: 2091091136}
 --- !u!1001 &2124471680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18167,7 +18185,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 486977115313357031, guid: 2b70f5abdb1124143b4bad7314d0f26b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2124433192}
   m_SourcePrefab: {fileID: 100100000, guid: 2b70f5abdb1124143b4bad7314d0f26b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
