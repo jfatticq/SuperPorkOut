@@ -3110,6 +3110,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2893272649769284938, guid: aaf3010ca8842f54b9478011d14296f5, type: 3}
+      propertyPath: stamina
+      value: 
+      objectReference: {fileID: 2091091163}
     - target: {fileID: 5180344824761099356, guid: aaf3010ca8842f54b9478011d14296f5, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4214,6 +4218,16 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5071072070681597536, guid: 58a0fb74884742648a4dee1aa188e628, type: 3}
   m_PrefabInstance: {fileID: 486908455}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &506530710 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4480518494195581636, guid: 5ed8a78a8e9b5e64ca0e9750ee7a74c9, type: 3}
+  m_PrefabInstance: {fileID: 2035563660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &506530716 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1046763502361243361, guid: 5ed8a78a8e9b5e64ca0e9750ee7a74c9, type: 3}
+  m_PrefabInstance: {fileID: 2035563660}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &511735493
 PrefabInstance:
@@ -7415,6 +7429,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7862945133140292604, guid: 27e18407bc53eef4299601fa4f125048, type: 3}
   m_PrefabInstance: {fileID: 841616530}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &852436753 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5432632013391342487, guid: b701b94326e1ad84c9aaf3ffe94e16c2, type: 3}
+  m_PrefabInstance: {fileID: 352056552}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &855477139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9701,6 +9720,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 194614823105658161, guid: f734332cf9807404da93e6475f8e126e, type: 3}
   m_PrefabInstance: {fileID: 1213178724}
   m_PrefabAsset: {fileID: 0}
+--- !u!223 &1213585137 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 7007387949208601537, guid: b701b94326e1ad84c9aaf3ffe94e16c2, type: 3}
+  m_PrefabInstance: {fileID: 352056552}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1214353706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10472,6 +10496,7 @@ MonoBehaviour:
   stamina: {fileID: 0}
   farmer: {fileID: 0}
   gameStateBus: {fileID: 2124433182}
+  runStatsRecorder: {fileID: 0}
   uIRefreshInterval: 0.1
 --- !u!1001 &1318735438
 PrefabInstance:
@@ -14743,6 +14768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenuController
   pauseListener: {fileID: 2124433178}
+  runStatsRecorder: {fileID: 0}
 --- !u!1001 &1863723341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16895,6 +16921,17 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 9153507278463073515, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
   m_PrefabInstance: {fileID: 6215808134420006448}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2091091163 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4102485973300753762, guid: 8b6183c4687b8bc4a88059e523170adf, type: 3}
+  m_PrefabInstance: {fileID: 6215808134420006448}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091091132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e274ba64452ca44967f89764803e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Characters.Player.Stamina
 --- !u!1001 &2092079965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17312,7 +17349,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseListener
   pauseMenuDocument: {fileID: 1856916376}
-  MainMenuSceneName: MainMenu
 --- !u!114 &2124433179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17399,7 +17435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82c5acc4dc3486b83d7c4b7889d4c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SuperPorkOut.Levels.ProximityAudioMixer
-  farmer: {fileID: 0}
+  farmer: {fileID: 506530716}
   pig: {fileID: 2091091136}
   proximityDistance: 15
   proximityToEffectCurve:
@@ -17426,7 +17462,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  farmerFootsteps: {fileID: 0}
+  farmerFootsteps: {fileID: 506530710}
   pigFootsteps: {fileID: 2091091154}
   backgroundMusic: {fileID: 166540752}
   farmerLoudnessBoost: 2
@@ -17444,8 +17480,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bdc3844419750744b5f10577c8fc1d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FoodPopupSpawner
-  canvas: {fileID: 0}
-  layer: {fileID: 0}
+  canvas: {fileID: 1213585137}
+  layer: {fileID: 852436753}
   popupPrefab: {fileID: 2434874683002072237, guid: 891ade3ecb564aa488d0c62d1a52f64b, type: 3}
   playerTransform: {fileID: 2091091136}
   verticalOffset: 2
