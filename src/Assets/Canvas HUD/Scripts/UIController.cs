@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using SuperPorkOut.Core;
+using SuperPorkOut.Gameplay.Pickups;
 
 public class UIController : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class UIController : MonoBehaviour
     {
         if (runstatsrecorder == null) return;
 
-        distanceText.text = $"Distance: {runstatsrecorder.Distancecount:F1}";
-        veggieText.text = $"Veggies: {runstatsrecorder.Veggiecount}";
+        distanceText.text = $" {runstatsrecorder.DistanceTraveled:0.0}";
+        veggieText.text = $" {runstatsrecorder.PickupCounts[FoodType.Carrot] + runstatsrecorder.PickupCounts[FoodType.Tomato] + runstatsrecorder.PickupCounts[FoodType.Cabbage] + runstatsrecorder.PickupCounts[FoodType.Other]}";
     }
 }
