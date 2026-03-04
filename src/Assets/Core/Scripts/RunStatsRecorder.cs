@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 namespace SuperPorkOut.Core
 {
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(GameStateBus))]
     public class RunStatsRecorder : MonoBehaviour
     {
