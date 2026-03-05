@@ -1,3 +1,4 @@
+using SuperPorkOut.Core;
 using SuperPorkOut.Levels;
 using SuperPorkOut.UI;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace SuperPorkOut.Gameplay
 
         [Header("Actions")]
         [SerializeField] private SceneFlow sceneFlow;
+        [SerializeField] private RunStatsRecorder runStatsRecorder;
 
         private UIDocument doc;
         private Button restartButton;
@@ -31,7 +33,7 @@ namespace SuperPorkOut.Gameplay
         {
             doc.enabled = true;
             Bind();
-            RefreshStatsPanel();
+            SaveAndRefreshStats();
         }
 
         public void Hide()
@@ -88,14 +90,22 @@ namespace SuperPorkOut.Gameplay
             sceneFlow.GoToMainMenu();
         }
 
-        private void RefreshStatsPanel()
+        private void SaveAndRefreshStats()
         {
+            var sceneName = SceneManager.GetActiveScene().name;
+
+            if (runStatsRecorder != null)
+            {
+                var entry = runStatsRecorder.BuildEntry();
+                RunStatsStore.Save(sceneName, entry);
+            }
+
             var root = doc.rootVisualElement;
             if (root == null) return;
 
             var panel = root.Q<RunStatsPanel>("RunStatsPanel");
             if (panel != null)
-                panel.Refresh(SceneManager.GetActiveScene().name);
+                panel.Refresh(sceneName);
         }
     }
 }

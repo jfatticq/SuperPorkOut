@@ -1,4 +1,5 @@
 using System.Collections;
+using SuperPorkOut.Core;
 using SuperPorkOut.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,6 +20,7 @@ namespace SuperPorkOut.Levels
 
         [Header("Actions")]
         [SerializeField] private SceneFlow sceneFlow;
+        [SerializeField] private RunStatsRecorder runStatsRecorder;
 
         private UIDocument doc;
         private VisualElement root;
@@ -61,7 +63,7 @@ namespace SuperPorkOut.Levels
                 fadeOverlay.style.backgroundColor = new Color(0f, 0f, 0f, 0f);
             }
 
-            RefreshStatsPanel();
+            SaveAndRefreshStats();
 
             if (fadeRoutine != null) StopCoroutine(fadeRoutine);
             fadeRoutine = StartCoroutine(FadeToBlack());
@@ -118,13 +120,21 @@ namespace SuperPorkOut.Levels
             fadeOverlay.style.backgroundColor = new Color(0f, 0f, 0f, 1f);
         }
 
-        private void RefreshStatsPanel()
+        private void SaveAndRefreshStats()
         {
+            var sceneName = SceneManager.GetActiveScene().name;
+
+            if (runStatsRecorder != null)
+            {
+                var entry = runStatsRecorder.BuildEntry();
+                RunStatsStore.Save(sceneName, entry);
+            }
+
             if (root == null) return;
 
             var panel = root.Q<RunStatsPanel>();
             if (panel != null)
-                panel.Refresh(SceneManager.GetActiveScene().name);
+                panel.Refresh(sceneName);
         }
 
         private void OnRestartClicked()
