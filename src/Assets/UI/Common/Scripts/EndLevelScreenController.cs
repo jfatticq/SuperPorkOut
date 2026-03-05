@@ -94,8 +94,7 @@ namespace SuperPorkOut.Gameplay
             if (root == null) return;
 
             var panel = root.Q<RunStatsPanel>("RunStatsPanel");
-            if (panel != null)
-                panel.Refresh(SceneManager.GetActiveScene().name);
+            panel?.Refresh(SceneManager.GetActiveScene().name);
         }
     }
 }
