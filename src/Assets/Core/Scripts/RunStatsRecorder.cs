@@ -101,28 +101,16 @@ namespace SuperPorkOut.Core
         private void OnLevelEnded(LevelEndedEvent evt)
         {
             frozen = true;
-
-            var entry = new RunStatsEntry
-            {
-                distanceTraveled = distanceTraveled,
-                timeElapsed = elapsedSeconds,
-                carrotCount = pickupCounts[FoodType.Carrot],
-                cabbageCount = pickupCounts[FoodType.Cabbage],
-                tomatoCount = pickupCounts[FoodType.Tomato],
-                otherCount = pickupCounts[FoodType.Other],
-                sceneName = SceneManager.GetActiveScene().name,
-                dateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm")
-            };
-
-            RunStatsStore.Save(entry.sceneName, entry);
-            RunStatsStore.Load(entry.sceneName);
         }
 
         private void OnCaptured(CapturedEvent evt)
         {
             frozen = true;
+        }
 
-            var entry = new RunStatsEntry
+        public RunStatsEntry BuildEntry()
+        {
+            return new RunStatsEntry
             {
                 distanceTraveled = distanceTraveled,
                 timeElapsed = elapsedSeconds,
@@ -133,9 +121,6 @@ namespace SuperPorkOut.Core
                 sceneName = SceneManager.GetActiveScene().name,
                 dateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm")
             };
-
-            RunStatsStore.Save(entry.sceneName, entry);
-            RunStatsStore.Load(entry.sceneName);
         }
     }
 }

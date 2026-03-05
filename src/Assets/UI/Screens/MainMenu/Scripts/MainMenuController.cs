@@ -67,6 +67,10 @@ namespace SuperPorkOut.Screens.MainMenu
                 ? "Escape Endless!"
                 : "Test the Fence!";
 
+            playButton.tooltip = GameState.IsTutorialCompleted
+                ? "Play the endless level"
+                : "Begin tutorial";
+
             playButton.clicked += OnPlayClicked;
             guideButton.clicked += OnGuideClicked;
             settingsButton.clicked += OnSettingsClicked;

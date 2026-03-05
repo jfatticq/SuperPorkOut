@@ -8,6 +8,8 @@ namespace SuperPorkOut.UI
     [UxmlElement]
     public partial class RunStatsPanel : VisualElement
     {
+        private static readonly Color pinkColor = new(0.6980392f, 0.454902f, 0.7372549f);
+
         [UxmlAttribute]
         public string SceneName { get; set; } = "Endless";
 
@@ -35,13 +37,20 @@ namespace SuperPorkOut.UI
             style.paddingRight = 8;
             style.marginTop = 4;
             style.marginBottom = 4;
+            style.backgroundColor = new Color(Color.black.r, Color.black.g, Color.black.b, 0.5f);
+            style.borderTopLeftRadius = 8;
+            style.borderTopRightRadius = 8;
+            style.borderBottomLeftRadius = 8;
+            style.borderBottomRightRadius = 8;
 
             titleLabel = new Label(Title);
             titleLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
             titleLabel.style.fontSize = 12;
             titleLabel.style.marginBottom = 2;
             titleLabel.style.unityTextAlign = TextAnchor.UpperCenter;
-            titleLabel.style.color = new Color(0.31f, 0.5f, 0.8f);
+            titleLabel.style.color = pinkColor;
+            titleLabel.style.unityTextOutlineColor = new Color(Color.black.r, Color.black.g, Color.black.b);
+            titleLabel.style.unityTextOutlineWidth = 1f;
             Add(titleLabel);
 
             tableContainer = new VisualElement();
@@ -51,7 +60,9 @@ namespace SuperPorkOut.UI
             emptyLabel.style.fontSize = 10;
             emptyLabel.style.unityTextAlign = TextAnchor.UpperCenter;
             emptyLabel.style.unityFontStyleAndWeight = FontStyle.Italic;
-            emptyLabel.style.color = new Color(0.31f, 0.5f, 0.8f);
+            emptyLabel.style.color = pinkColor;
+            emptyLabel.style.unityTextOutlineColor = new Color(Color.black.r, Color.black.g, Color.black.b);
+            emptyLabel.style.unityTextOutlineWidth = 1f;
             emptyLabel.style.paddingTop = 12;
             emptyLabel.style.paddingBottom = 12;
             Add(emptyLabel);
@@ -113,8 +124,8 @@ namespace SuperPorkOut.UI
         {
             var row = new VisualElement();
             row.style.flexDirection = FlexDirection.Row;
-            row.style.paddingTop = 3;
-            row.style.paddingBottom = 3;
+            row.style.paddingTop = 1;
+            row.style.paddingBottom = 1;
             row.style.borderBottomWidth = isHeader ? 2 : 1;
             row.style.borderBottomColor = isHeader
                 ? new Color(0, 0, 0)
@@ -138,7 +149,9 @@ namespace SuperPorkOut.UI
             cell.style.flexGrow = flexGrow;
             cell.style.flexBasis = 0;
             cell.style.unityTextAlign = TextAnchor.UpperCenter;
-            cell.style.color = new Color(0.24f, 0.16f, 0.06f);
+            cell.style.color = pinkColor;
+            cell.style.unityTextOutlineColor = new Color(Color.black.r, Color.black.g, Color.black.b);
+            cell.style.unityTextOutlineWidth = 1f;
             cell.style.overflow = Overflow.Hidden;
             cell.style.unityFontStyleAndWeight = fontStyle;
             if (minWidth > 0)

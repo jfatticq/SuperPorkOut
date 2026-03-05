@@ -10950,6 +10950,7 @@ MonoBehaviour:
   fadeOverlayName: FadeOverlay
   fadeToBlackSeconds: 1
   sceneFlow: {fileID: 2124433179}
+  runStatsRecorder: {fileID: 8855202625699185420}
 --- !u!1 &994833483
 GameObject:
   m_ObjectHideFlags: 0
@@ -16660,6 +16661,7 @@ MonoBehaviour:
   restartButtonName: RestartButton
   mainMenuButtonName: MainMenuButton
   sceneFlow: {fileID: 2124433179}
+  runStatsRecorder: {fileID: 8855202625699185420}
 --- !u!1001 &1582535899
 PrefabInstance:
   m_ObjectHideFlags: 0
