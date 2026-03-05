@@ -1,7 +1,9 @@
 using SuperPorkOut.Core;
 using SuperPorkOut.Gameplay.Pickups;
 using SuperPorkOut.Levels;
+using SuperPorkOut.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(UIDocument))]
@@ -47,6 +49,12 @@ public class PauseMenuController : MonoBehaviour
         if (statsLabel != null && runStatsRecorder != null)
         {
             statsLabel.text = FormatCurrentRunStats();
+        }
+
+        var statsPanel = root.Q<RunStatsPanel>();
+        if (statsPanel != null)
+        {
+            statsPanel.Refresh(SceneManager.GetActiveScene().name);
         }
     }
 

@@ -1,5 +1,7 @@
 using System.Collections;
+using SuperPorkOut.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace SuperPorkOut.Levels
@@ -59,6 +61,8 @@ namespace SuperPorkOut.Levels
                 fadeOverlay.style.backgroundColor = new Color(0f, 0f, 0f, 0f);
             }
 
+            RefreshStatsPanel();
+
             if (fadeRoutine != null) StopCoroutine(fadeRoutine);
             fadeRoutine = StartCoroutine(FadeToBlack());
         }
@@ -112,6 +116,15 @@ namespace SuperPorkOut.Levels
             }
 
             fadeOverlay.style.backgroundColor = new Color(0f, 0f, 0f, 1f);
+        }
+
+        private void RefreshStatsPanel()
+        {
+            if (root == null) return;
+
+            var panel = root.Q<RunStatsPanel>();
+            if (panel != null)
+                panel.Refresh(SceneManager.GetActiveScene().name);
         }
 
         private void OnRestartClicked()
