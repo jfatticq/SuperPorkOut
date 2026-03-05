@@ -640,6 +640,7 @@ MonoBehaviour:
   EndlessSceneName: TEST_ENDLESS_A
   GuideSceneName: Guide
   SettingsSceneName: Settings
+  CreditsSceneName: Credits
 --- !u!114 &65445685
 MonoBehaviour:
   m_ObjectHideFlags: 0

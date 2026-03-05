@@ -1,5 +1,5 @@
-using System.Collections;
 using SuperPorkOut.UI;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -123,18 +123,19 @@ namespace SuperPorkOut.Levels
             if (root == null) return;
 
             var panel = root.Q<RunStatsPanel>();
-            if (panel != null)
-                panel.Refresh(SceneManager.GetActiveScene().name);
+            panel?.Refresh(SceneManager.GetActiveScene().name);
         }
 
         private void OnRestartClicked()
         {
-            if (sceneFlow != null) sceneFlow.RestartCurrentScene();
+            if (sceneFlow != null) 
+                sceneFlow.RestartCurrentScene();
         }
 
         private void OnMainMenuClicked()
         {
-            if (sceneFlow != null) sceneFlow.GoToMainMenu();
+            if (sceneFlow != null) 
+                sceneFlow.GoToMainMenu();
         }
     }
 }
